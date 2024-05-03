@@ -76,6 +76,11 @@ in {
       enable = true;
     };
 
+    keychain = {
+      enable = true;
+      keys = ["/home/vegar/.ssh/id_ed25519"];
+    };
+
     zsh = {
       enable = true;
       defaultKeymap = "viins";

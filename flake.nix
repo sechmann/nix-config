@@ -20,11 +20,10 @@
   };
 
   outputs = {
-    self,
     nixpkgs,
     home-manager,
     kolide-launcher,
-    nixvim,
+    ...
   } @ inputs: {
     nixosConfigurations = {
       vegar-nav = nixpkgs.lib.nixosSystem {
