@@ -119,6 +119,9 @@
         "type:keyboard" = {
           xkb_layout = "us-no";
         };
+        "type:touchpad" = {
+          natural_scroll = "enabled";
+        };
       };
       output = {
         DP-3 = {
