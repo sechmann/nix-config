@@ -1,4 +1,8 @@
-{pkgs, ...}: {
+{
+  pkgs,
+  lib,
+  ...
+}: {
   services.swayidle = {
     enable = true;
     events = [
@@ -10,6 +14,10 @@
         event = "lock";
         command = "${pkgs.swaylock}/bin/swaylock -f";
       }
+      {
+        event = "after-resume";
+        command = "swaymsg 'output * dpms on'";
+      }
     ];
     timeouts = [
       {
@@ -19,6 +27,10 @@
       {
         timeout = 90;
         command = "${pkgs.systemd}/bin/systemctl suspend";
+      }
+      {
+        timeout = 70;
+        command = "swaymsg 'output * dpms off'";
       }
     ];
   };
@@ -68,8 +80,15 @@
       base = true;
     };
     systemd.enable = true;
-    config = {
+    config = let
       modifier = "Mod4";
+    in {
+      modifier = "${modifier}";
+      keybindings = lib.mkOptionDefault {
+        #"${modifier}+Shift+q" = "kill";
+        #"${modifier}+d" = "exec ${pkgs.dmenu}/bin/dmenu_path | ${pkgs.dmenu}/bin/dmenu | ${pkgs.findutils}/bin/xargs swaymsg exec --";
+        "$Ctrl+Alt+l" = "exec swaylock";
+      };
       fonts = {
         size = 11.0;
       };

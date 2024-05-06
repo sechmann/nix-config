@@ -35,7 +35,7 @@
             home-manager.useGlobalPkgs = true;
             home-manager.useUserPackages = true;
             home-manager.extraSpecialArgs = {inherit inputs;};
-            home-manager.users.vegar = import ./hm;
+            home-manager.users.vegar = import ./home-manager;
           }
 
           (import ./system/kolide.nix {inherit inputs;})
