@@ -87,7 +87,7 @@
       keybindings = lib.mkOptionDefault {
         #"${modifier}+Shift+q" = "kill";
         #"${modifier}+d" = "exec ${pkgs.dmenu}/bin/dmenu_path | ${pkgs.dmenu}/bin/dmenu | ${pkgs.findutils}/bin/xargs swaymsg exec --";
-        "$Ctrl+Alt+l" = "exec swaylock";
+        "Ctrl+Alt+l" = "exec swaylock";
       };
       fonts = {
         size = 11.0;
