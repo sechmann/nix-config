@@ -24,10 +24,8 @@
       bind-key j select-pane -D
       bind-key k select-pane -U
       bind-key l select-pane -R
-      bind-key H swap-pane -L
       bind-key J swap-pane -D
       bind-key K swap-pane -U
-      bind-key L swap-pane -R
       bind -n M-h select-pane -L
       bind -n M-j select-pane -D
       bind -n M-k select-pane -U
