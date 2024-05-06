@@ -79,6 +79,7 @@
     vim
     v4l-utils
     wireguard-tools
+    networkmanagerapplet
   ];
 
   programs.light.enable = true;
