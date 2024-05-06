@@ -78,6 +78,7 @@
     curl
     vim
     v4l-utils
+    wireguard-tools
   ];
 
   programs.light.enable = true;
@@ -92,6 +93,9 @@
       ];
     };
   };
+
+  # allow swaylock to lock / unlock session
+  security.pam.services.swaylock = {};
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
