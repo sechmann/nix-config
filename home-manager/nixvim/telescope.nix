@@ -14,9 +14,9 @@
         action = "current_buffer_fuzzy_find";
         #desc = "[/] Fuzzily search in current buffer]";
       };
-      "<leader>sf" = {
+      "<leader>ff" = {
         action = "find_files";
-        #desc = "[s]earch [f]iles";
+        #desc = "[f]ind [f]iles";
       };
       "<leader>sh" = {
         action = "help_tags";
