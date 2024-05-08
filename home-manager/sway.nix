@@ -45,15 +45,15 @@
     ];
     timeouts = [
       {
-        timeout = 60;
+        timeout = 300;
         command = "${pkgs.swaylock}/bin/swaylock -f";
       }
       {
-        timeout = 90;
+        timeout = 320;
         command = "${pkgs.systemd}/bin/systemctl suspend";
       }
       {
-        timeout = 70;
+        timeout = 310;
         command = "swaymsg 'output * dpms off'";
       }
     ];

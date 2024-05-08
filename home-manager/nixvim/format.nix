@@ -1,4 +1,4 @@
-{pkgs, ...}: {
+{...}: {
   plugins.conform-nvim = {
     enable = true;
     formattersByFt = {
@@ -7,7 +7,6 @@
       cpp = ["astyle"];
       css = ["prettierd" "prettier"];
       cmake = ["cmake_format"];
-      go = ["goimports" "gofumpt" "golines"];
       html = ["prettierd" "prettier"];
       javascript = ["prettierd" "prettier"];
       javascriptreact = ["prettier"];

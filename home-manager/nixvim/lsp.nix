@@ -4,7 +4,12 @@
       enable = true;
       servers = {
         nixd.enable = true;
-        gopls.enable = true;
+        gopls = {
+          enable = true;
+          extraOptions = {
+            formatting.gofumpt = true;
+          };
+        };
       };
       keymaps = {
         diagnostic = {
