@@ -23,6 +23,8 @@
           gd = "definition";
           gi = "implementation";
           gt = "type_definition";
+          "<leader>rn" = "rename";
+          "<leader>ca" = "code_action";
         };
       };
     };

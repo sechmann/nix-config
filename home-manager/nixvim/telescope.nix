@@ -1,4 +1,5 @@
-{pkgs, ...}: {
+{ pkgs, ... }:
+{
   plugins.telescope = {
     enable = true;
     keymaps = {
@@ -18,25 +19,25 @@
         action = "find_files";
         #desc = "[f]ind [f]iles";
       };
-      "<leader>sh" = {
+      "<leader>fh" = {
         action = "help_tags";
-        #desc = "[s]earch [h]elp";
+        #desc = "[f]find [h]elp";
       };
-      "<leader>sw" = {
+      "<leader>fw" = {
         action = "grep_string";
-        #desc = "[s]earch current [w]ord";
+        #desc = "[f]ind current [w]ord";
       };
-      "<leader>sg" = {
+      "<leader>fg" = {
         action = "live_grep";
-        #desc = "[s]earch by [g]rep";
+        #desc = "[f]ind by [g]rep";
       };
-      "<leader>sd" = {
+      "<leader>fd" = {
         action = "diagnostics";
-        #desc = "[s]earch [d]iagnotics";
+        #desc = "[f]ind [d]iagnotics";
       };
-      "<leader>sk" = {
+      "<leader>fk" = {
         action = "keymaps";
-        #desc = "[s]earch [k]eymaps";
+        #desc = "[f]ind [k]eymaps";
       };
     };
   };

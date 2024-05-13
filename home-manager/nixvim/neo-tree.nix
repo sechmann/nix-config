@@ -2,6 +2,13 @@
   config = {
     plugins.neo-tree = {
       enable = true;
+      closeIfLastWindow = true;
+      enableRefreshOnWrite = true;
+      enableGitStatus = true;
+      filesystem.followCurrentFile = {
+        enabled = true;
+        leaveDirsOpen = false;
+      };
     };
     keymaps = [
       {

@@ -1,4 +1,5 @@
 {...}: {
+  # for a list of formatters: `:help conform-formatters`
   plugins.conform-nvim = {
     enable = true;
     formattersByFt = {
@@ -13,7 +14,7 @@
       json = ["prettier"];
       lua = ["stylua"];
       markdown = ["prettier"];
-      nix = ["alejandra"];
+      nix = ["nixfmt"];
       python = ["isort" "black"];
       rust = ["rustfmt"];
       sh = ["shfmt"];

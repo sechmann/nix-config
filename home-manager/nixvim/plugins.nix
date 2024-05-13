@@ -23,7 +23,8 @@ in {
   };
   extraPackages = with pkgs; [
     # Formatters
-    alejandra
+    #alejandra
+    nixfmt-rfc-style
     asmfmt
     astyle
     black
