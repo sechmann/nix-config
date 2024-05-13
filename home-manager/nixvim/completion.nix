@@ -8,7 +8,7 @@
           "<C-f>" = "cmp.mapping.scroll_docs(4)";
           "<C-e>" = "cmp.mapping.close()";
           "<C-space>" = "cmp.mapping.complete()";
-          "<CR>" = "cmp.mapping.confirm({ select = true })";
+          "<CR>" = "cmp.mapping.confirm({ select = true, behavior = cmp.ConfirmBehavior.Insert })";
           "<Tab>" = "cmp.mapping.select_next_item()";
           "<S-Tab>" = "cmp.mapping.select_prev_item()";
           "<Down>" = "cmp.mapping.select_next_item()";
