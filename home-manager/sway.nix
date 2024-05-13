@@ -141,6 +141,13 @@
             };
             command = "floating enable";
           }
+          {
+            criteria = {
+              class = "zoom";
+              title = ".*Zoom Meeting";
+            };
+            command = "inhibit_idle visible";
+          }
         ];
       };
     };
