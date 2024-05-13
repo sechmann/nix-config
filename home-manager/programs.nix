@@ -1,60 +1,61 @@
-{
-  pkgs,
-  inputs,
-  ...
-}: let
+{ pkgs, inputs, ... }:
+let
   neovimconfig = import ./nixvim;
   nvim = inputs.nixvim.legacyPackages.x86_64-linux.makeNixvimWithModule {
     inherit pkgs;
     module = neovimconfig;
   };
-in {
+in
+{
   imports = [
     ./tmux.nix
     ./git.nix
     ./zsh.nix
   ];
-  home.packages = with pkgs; [
-    nvim
-    btop
-    btop
-    ethtool
-    eza
-    file
-    firefox
-    fzf
-    gawk
-    gnupg
-    gnused
-    gnutar
-    iftop
-    iotop
-    jq
-    ldns
-    lm_sensors
-    lsof
-    ltrace
-    nix-output-monitor
-    p7zip
-    pciutils
-    ripgrep
-    slack
-    spotify
-    strace
-    sysstat
-    tree
-    unzip
-    usbutils
-    which
-    xz
-    yq-go
-    zip
-    zoom-us
-    pavucontrol
-    kubectl
-    yt-dlp
-    mpv
-  ];
+  home.packages =
+    [ nvim ]
+    ++ (with pkgs; [
+      btop
+      btop
+      ethtool
+      eza
+      fd
+      file
+      firefox
+      fzf
+      gawk
+      gnupg
+      gnused
+      gnutar
+      google-cloud-sdk
+      iftop
+      iotop
+      jq
+      kubectl
+      ldns
+      lm_sensors
+      lsof
+      ltrace
+      mpv
+      nix-output-monitor
+      p7zip
+      pavucontrol
+      pciutils
+      ripgrep
+      slack
+      spotify
+      strace
+      sysstat
+      tree
+      unzip
+      usbutils
+      which
+      xz
+      yq-go
+      yt-dlp
+      zip
+      zoom-us
+    ]);
 
   programs = {
     fzf = {
@@ -63,7 +64,7 @@ in {
 
     keychain = {
       enable = true;
-      keys = ["/home/vegar/.ssh/id_ed25519"];
+      keys = [ "/home/vegar/.ssh/id_ed25519" ];
     };
 
     direnv = {
