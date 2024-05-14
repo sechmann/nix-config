@@ -1,9 +1,7 @@
-{
-  pkgs,
-  lib,
-  ...
-}: let
-  fromGitHub = rev: ref: repo:
+{ pkgs, lib, ... }:
+let
+  fromGitHub =
+    rev: ref: repo:
     pkgs.vimUtils.buildVimPlugin {
       pname = "${lib.strings.sanitizeDerivationName repo}";
       version = ref;
@@ -13,7 +11,8 @@
         rev = rev;
       };
     };
-in {
+in
+{
   plugins = {
     gitsigns.enable = true;
     #oil.enable = true;

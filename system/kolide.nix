@@ -1,9 +1,7 @@
-
-{ inputs }: { pkgs, ... }:
+{ inputs }:
+{ pkgs, ... }:
 {
-  environment.systemPackages = with pkgs; [
-    inputs.kolide-launcher
-  ];
+  environment.systemPackages = with pkgs; [ inputs.kolide-launcher ];
 
   services.kolide-launcher = {
     enable = true;

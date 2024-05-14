@@ -4,7 +4,8 @@
   pkgs,
   nixpgs,
   ...
-}: {
+}:
+{
   nix = {
     package = pkgs.nixFlakes;
     extraOptions = ''
@@ -63,7 +64,10 @@
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.vegar = {
     isNormalUser = true;
-    extraGroups = ["wheel" "video"]; # Enable ‘sudo’ for the user.
+    extraGroups = [
+      "wheel"
+      "video"
+    ]; # Enable ‘sudo’ for the user.
     shell = pkgs.zsh;
   };
 
@@ -93,17 +97,13 @@
   xdg.portal.wlr.enable = true;
   xdg.portal.config = {
     common = {
-      default = [
-        "gtk"
-      ];
-      "org.freedesktop.impl.portal.Secret" = [
-        "gnome-keyring"
-      ];
+      default = [ "gtk" ];
+      "org.freedesktop.impl.portal.Secret" = [ "gnome-keyring" ];
     };
   };
 
   # allow swaylock to lock / unlock session
-  security.pam.services.swaylock = {};
+  security.pam.services.swaylock = { };
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.

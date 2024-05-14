@@ -1,4 +1,5 @@
-{...}: {
+{ ... }:
+{
   plugins = {
     cmp = {
       enable = true;
