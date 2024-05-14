@@ -8,8 +8,9 @@ let
 in
 {
   imports = [
-    ./tmux.nix
     ./git.nix
+    ./ssh.nix
+    ./tmux.nix
     ./zsh.nix
   ];
   home.packages =
@@ -18,10 +19,12 @@ in
       btop
       btop
       ethtool
+      overmind
       eza
       fd
       file
       firefox
+      google-chrome
       fzf
       gawk
       gnupg
@@ -55,7 +58,13 @@ in
       yt-dlp
       zip
       zoom-us
+      kanshi
     ]);
+
+  services.mako = {
+    backgroundColor = "#285577BB";
+    defaultTimeout = 5000;
+  };
 
   programs = {
     fzf = {

@@ -19,29 +19,35 @@
     };
   };
 
-  outputs = {
-    nixpkgs,
-    home-manager,
-    kolide-launcher,
-    ...
-  } @ inputs: {
-    nixosConfigurations = {
-      vegar-nav = nixpkgs.lib.nixosSystem {
-        system = "x86_64-linux";
-        modules = [
-          ./system/configuration.nix
-          home-manager.nixosModules.home-manager
-          {
-            home-manager.useGlobalPkgs = true;
-            home-manager.useUserPackages = true;
-            home-manager.extraSpecialArgs = {inherit inputs;};
-            home-manager.users.vegar = import ./home-manager;
-          }
+  outputs =
+    {
+      nixpkgs,
+      home-manager,
+      kolide-launcher,
+      ...
+    }@inputs:
+    {
+      nixosConfigurations = {
+        nixpkgs.overlays = [ (import ./overlays/wayland.nix) ];
+        vegar-nav = nixpkgs.lib.nixosSystem {
+          system = "x86_64-linux";
+          modules = [
+            ./system/configuration.nix
+            home-manager.nixosModules.home-manager
+            {
+              home-manager.useGlobalPkgs = true;
+              home-manager.useUserPackages = true;
+              home-manager.extraSpecialArgs = {
+                inherit inputs;
+              };
+              home-manager.users.vegar = import ./home-manager;
+            }
 
-          (import ./system/kolide.nix {inherit inputs;})
-          kolide-launcher.nixosModules.kolide-launcher
-        ];
+            (import ./system/kolide.nix { inherit inputs; })
+            kolide-launcher.nixosModules.kolide-launcher
+          ];
+        };
+        formatter.x86_64-linux = nixpkgs.nixpkgsFor.legacyPackages.x86_64-linux.nixfmt-rfc-style;
       };
     };
-  };
 }
