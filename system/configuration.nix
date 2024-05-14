@@ -67,6 +67,7 @@
     extraGroups = [
       "wheel"
       "video"
+      "networkmanager"
     ]; # Enable ‘sudo’ for the user.
     shell = pkgs.zsh;
   };
@@ -118,6 +119,8 @@
 
   hardware.bluetooth.enable = true;
   hardware.bluetooth.powerOnBoot = true;
+
+  services.fwupd.enable = true;
 
   # Open ports in the firewall.
   # networking.firewall.allowedTCPPorts = [ ... ];
