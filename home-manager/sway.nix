@@ -40,18 +40,20 @@
   services.kanshi = {
     enable = true;
     systemdTarget = "sway-session.target";
-    profiles = {
-      undocked = {
-        outputs = [
+    settings = [
+      {
+        profile.name = "undocked";
+        profile.outputs = [
           {
             criteria = "eDP-1";
             mode = "1920x1200@60.026Hz";
             status = "enable";
           }
         ];
-      };
-      docked = {
-        outputs = [
+      }
+      {
+        profile.name = "docked";
+        profile.outputs = [
           {
             criteria = "LG Electronics LG TV SSCR2 0x01010101";
             mode = "3840x2160@119.880Hz";
@@ -62,8 +64,8 @@
             status = "disable";
           }
         ];
-      };
-    };
+      }
+    ];
   };
 
   services.swayidle = {
