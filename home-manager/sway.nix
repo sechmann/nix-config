@@ -45,6 +45,7 @@
         outputs = [
           {
             criteria = "eDP-1";
+            mode = "1920x1200@60.026Hz";
             status = "enable";
           }
         ];
@@ -55,7 +56,6 @@
             criteria = "LG Electronics LG TV SSCR2 0x01010101";
             mode = "3840x2160@119.880Hz";
             position = "0,0";
-            status = "enable";
           }
           {
             criteria = "eDP-1";
@@ -163,12 +163,6 @@
           };
           "type:touchpad" = {
             natural_scroll = "enabled";
-          };
-        };
-        output = {
-          DP-3 = {
-            mode = "3840x2160@120.000Hz";
-            pos = "0 0";
           };
         };
         bars = [ ];
