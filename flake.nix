@@ -17,6 +17,9 @@
       url = "github:nix-community/nixvim";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    naisdevice = {
+      url = "path:/home/vegar/dev/nais/device/";
+    };
   };
 
   outputs =
@@ -24,11 +27,12 @@
       nixpkgs,
       home-manager,
       kolide-launcher,
+      naisdevice,
       ...
     }@inputs:
     {
       nixosConfigurations = {
-        nixpkgs.overlays = [ (import ./overlays/wayland.nix) ];
+        nixpkgs.overlays = [ (import ./overlays/wayland.nix) ] ++ naisdevice.overlays;
         vegar-nav = nixpkgs.lib.nixosSystem {
           system = "x86_64-linux";
           modules = [
@@ -45,6 +49,9 @@
 
             (import ./system/kolide.nix { inherit inputs; })
             kolide-launcher.nixosModules.kolide-launcher
+
+            (import ./system/naisdevice.nix)
+            naisdevice.nixosModules.naisdevice
           ];
         };
       };

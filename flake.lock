@@ -207,6 +207,21 @@
         "type": "github"
       }
     },
+    "naisdevice": {
+      "inputs": {
+        "nixpkgs": "nixpkgs"
+      },
+      "locked": {
+        "lastModified": 0,
+        "narHash": "sha256-mzBgMNTEFkaifshQRD8iNpQ4v/qevtsQcd6F+aD7/tI=",
+        "path": "/home/vegar/dev/nais/device/",
+        "type": "path"
+      },
+      "original": {
+        "path": "/home/vegar/dev/nais/device/",
+        "type": "path"
+      }
+    },
     "nix-darwin": {
       "inputs": {
         "nixpkgs": [
@@ -229,6 +244,21 @@
       }
     },
     "nixpkgs": {
+      "locked": {
+        "lastModified": 1715534503,
+        "narHash": "sha256-5ZSVkFadZbFP1THataCaSf0JH2cAH3S29hU9rrxTEqk=",
+        "owner": "NixOS",
+        "repo": "nixpkgs",
+        "rev": "2057814051972fa1453ddfb0d98badbea9b83c06",
+        "type": "github"
+      },
+      "original": {
+        "id": "nixpkgs",
+        "ref": "nixos-unstable",
+        "type": "indirect"
+      }
+    },
+    "nixpkgs_2": {
       "locked": {
         "lastModified": 1715534503,
         "narHash": "sha256-5ZSVkFadZbFP1THataCaSf0JH2cAH3S29hU9rrxTEqk=",
@@ -304,7 +334,8 @@
       "inputs": {
         "home-manager": "home-manager",
         "kolide-launcher": "kolide-launcher",
-        "nixpkgs": "nixpkgs",
+        "naisdevice": "naisdevice",
+        "nixpkgs": "nixpkgs_2",
         "nixvim": "nixvim"
       }
     },
