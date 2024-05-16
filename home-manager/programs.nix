@@ -1,4 +1,9 @@
-{ pkgs, inputs, ... }:
+{
+  pkgs,
+  inputs,
+  config,
+  ...
+}:
 let
   neovimconfig = import ./nixvim;
   nvim = inputs.nixvim.legacyPackages.x86_64-linux.makeNixvimWithModule {
@@ -73,7 +78,10 @@ in
 
     keychain = {
       enable = true;
-      keys = [ "/home/vegar/.ssh/id_ed25519" ];
+      keys = [
+        (config.home.homeDirectory + "/.ssh/id_ed25519")
+        (config.home.homeDirectory + "/.ssh/google_compute_engine")
+      ];
     };
 
     direnv = {
