@@ -50,7 +50,10 @@
             (import ./system/kolide.nix { inherit inputs; })
             kolide-launcher.nixosModules.kolide-launcher
 
-            (import ./system/naisdevice.nix)
+            {
+              services.naisdevice.enable = true;
+              environment.systemPackages = [ naisdevice.package ];
+            }
             naisdevice.nixosModules.naisdevice
           ];
         };
