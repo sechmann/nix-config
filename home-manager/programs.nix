@@ -35,11 +35,12 @@ in
       gnupg
       gnused
       gnutar
-      google-cloud-sdk
+      (google-cloud-sdk.withExtraComponents [ google-cloud-sdk.components.gke-gcloud-auth-plugin ])
       iftop
       iotop
       jq
       kubectl
+      kubelogin
       ldns
       lm_sensors
       lsof
