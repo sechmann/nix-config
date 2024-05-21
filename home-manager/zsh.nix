@@ -23,6 +23,9 @@
     history = {
       ignoreSpace = true;
     };
+    initExtra = ''
+      source <(switcher init zsh)
+    '';
     profileExtra = ''
       # vim:ft=zsh
 
@@ -75,12 +78,12 @@
       }
 
       kc () {
-        kubectx $@
+        switch $@
         [ -n "$TMUX" ] && tmux refresh-client -S || true
       }
 
       kns () {
-        kubens $@
+        switch ns $@
         [ -n "$TMUX" ] && tmux refresh-client -S || true
       }
 

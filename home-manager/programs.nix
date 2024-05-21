@@ -21,6 +21,9 @@ in
   home.packages =
     [ nvim ]
     ++ (with pkgs; [
+      wofi
+      adriconf
+      kitty
       btop
       btop
       ethtool
@@ -36,6 +39,7 @@ in
       gnused
       gnutar
       (google-cloud-sdk.withExtraComponents [ google-cloud-sdk.components.gke-gcloud-auth-plugin ])
+      kubeswitch
       iftop
       iotop
       jq

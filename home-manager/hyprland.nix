@@ -3,9 +3,17 @@
   wayland.windowManager.hyprland = {
     enable = true;
     settings = {
+      monitor = [
+        "DP-3,3840x2160@120.00Hz,0x0,1"
+        "eDP-1,1920x1200@60.03Hz,3840x0,1"
+      ];
       decoration = {
         shadow_offset = "0 5";
         "col.shadow" = "rgba(00000099)";
+      };
+
+      input = {
+        kb_layout = "us-no";
       };
 
       "$mod" = "SUPER";
@@ -14,6 +22,8 @@
         [
           "$mod, F, exec, firefox"
           "$mod, T, exec, wezterm"
+          "$mod, K, exec, kitty"
+          "$mod, D, exec, wofi"
           ", Print, exec, grimblast copy area"
         ]
         ++ (

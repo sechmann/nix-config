@@ -5,13 +5,12 @@ let
     export XDG_SESSION_DESKTOP=sway
     export XDG_CURRENT_DESKTOP=sway
 
-    ${pkgs.sway}/bin/sway
+    ${pkgs.sway}/bin/sway |& tee sway.log
   '';
   hyprlandRun = pkgs.writeShellScript "hyprland-run" ''
-    export XDG_SESSION_TYPE=wayland
-    export XDG_SESSION_DESKTOP=hyprland
-    export XDG_CURRENT_DESKTOP=hyprland
-
+    #export XDG_SESSION_TYPE=wayland
+    #export XDG_SESSION_DESKTOP=hyprland
+    #export XDG_CURRENT_DESKTOP=hyprland
     ${pkgs.hyprland}/bin/Hyprland
   '';
 in
@@ -25,6 +24,16 @@ in
         }/tuigreet --time --remember --remember-session --sessions=/etc/greetd/environments.d/";
       };
     };
+  };
+
+  systemd.services.greetd.serviceConfig = {
+    Type = "idle";
+    StandardInput = "tty";
+    StandardOutput = "tty";
+    StandardError = "journal";
+    TTYReset = true;
+    TTYVHangup = true;
+    TTYVTDisallocate = true;
   };
 
   environment.etc."greetd/environments.d/sway.desktop".text = ''
