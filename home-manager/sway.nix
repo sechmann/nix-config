@@ -155,6 +155,7 @@
         keybindings = lib.mkOptionDefault {
           #"${modifier}+Shift+q" = "kill";
           #"${modifier}+d" = "exec ${pkgs.dmenu}/bin/dmenu_path | ${pkgs.dmenu}/bin/dmenu | ${pkgs.findutils}/bin/xargs swaymsg exec --";
+          "${modifier}+d" = "exec ${pkgs.kickoff}/bin/kickoff";
           "Ctrl+Alt+l" = "exec swaylock";
         };
         fonts = {

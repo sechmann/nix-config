@@ -21,7 +21,7 @@ in
   home.packages =
     [ nvim ]
     ++ (with pkgs; [
-      wofi
+      kickoff
       adriconf
       kitty
       btop
