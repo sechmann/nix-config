@@ -57,8 +57,9 @@
         profile.outputs = [
           {
             criteria = "LG Electronics LG TV SSCR2 0x01010101";
-            mode = "3840x2160@119.880Hz";
+            mode = "3840x2160@120.000Hz";
             position = "0,0";
+            scale = 1;
           }
           {
             criteria = "eDP-1";
