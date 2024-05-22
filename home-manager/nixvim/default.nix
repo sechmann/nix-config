@@ -10,5 +10,6 @@
     ./plugins.nix
     ./telescope.nix
     ./treesitter.nix
+    ./debug.nix
   ];
 }

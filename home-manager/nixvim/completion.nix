@@ -41,6 +41,7 @@
     cmp-cmdline.enable = true;
     cmp-path.enable = true;
     cmp-nvim-lsp-signature-help.enable = true;
+    cmp-dap.enable = true;
     cmp_luasnip.enable = true;
     luasnip.enable = true;
   };
