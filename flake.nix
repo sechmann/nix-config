@@ -20,6 +20,10 @@
     naisdevice = {
       url = "path:/home/vegar/dev/nais/device/";
     };
+    wezterm = {
+      url = "github:wez/wezterm?dir=nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs =
@@ -30,11 +34,14 @@
       naisdevice,
       ...
     }@inputs:
+    let
+      system = "x86_64-linux";
+    in
     {
       nixosConfigurations = {
         nixpkgs.overlays = [ (import ./overlays/wayland.nix) ] ++ naisdevice.overlays;
         vegar-nav = nixpkgs.lib.nixosSystem {
-          system = "x86_64-linux";
+          inherit system;
           modules = [
             ./system/configuration.nix
             home-manager.nixosModules.home-manager
@@ -43,6 +50,7 @@
               home-manager.useUserPackages = true;
               home-manager.extraSpecialArgs = {
                 inherit inputs;
+                inherit system;
               };
               home-manager.users.vegar = import ./home-manager;
             }
