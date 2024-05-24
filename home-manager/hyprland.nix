@@ -1,11 +1,16 @@
 { pkgs, ... }:
+let
+  laptopMon = "desc:AU Optronics 0xF99A";
+  laptopMonSettings = "${laptopMon},1920x1200@60.03Hz,3840x0,1";
+  externalMonSettings = "desc:LG Electronics LG TV SSCR2 0x01010101,3840x2160@120.00Hz,0x0,1,bitdepth,10";
+in
 {
   wayland.windowManager.hyprland = {
     enable = true;
     settings = {
       monitor = [
-        "desc:LG Electronics LG TV SSCR2 0x01010101,3840x2160@120.00Hz,0x0,1,bitdepth,10"
-        "desc:AU Optronics 0xF99A,1920x1200@60.03Hz,3840x0,1"
+        externalMonSettings
+        laptopMonSettings
       ];
       decoration = {
         shadow_offset = "0 5";
@@ -63,6 +68,11 @@
         "$mod, mouse:272, movewindow"
         "$mod, mouse:273, resizewindow"
         "$mod ALT, mouse:272, resizewindow"
+      ];
+
+      bindl = [
+        ",switch:on:Lid Switch,exec,hyprctl keyword monitor '${externalMonSettings}' && hyprctl keyword monitor '${laptopMon},disable'"
+        ",switch:off:Lid Switch,exec,hyprctl keyword monitor '${externalMonSettings}' && hyprctl keyword monitor '${laptopMonSettings}'"
       ];
 
       exec-once = [
