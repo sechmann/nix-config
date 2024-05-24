@@ -2,6 +2,7 @@
   pkgs,
   inputs,
   config,
+  system,
   ...
 }:
 let
@@ -53,6 +54,7 @@ in
       nix-output-monitor
       p7zip
       pavucontrol
+      pamixer
       pciutils
       ripgrep
       slack
@@ -69,6 +71,7 @@ in
       zip
       zoom-us
       kanshi
+      lix
     ]);
 
   services.mako = {
@@ -77,6 +80,10 @@ in
   };
 
   programs = {
+    texlive = {
+      enable = true;
+      extraPackages = tpkgs: { inherit (tpkgs) collection-basic; };
+    };
     fzf = {
       enable = true;
     };
@@ -95,6 +102,7 @@ in
 
     wezterm = {
       enable = true;
+      package = inputs.wezterm.packages."${system}".default;
       extraConfig = ''
         local wezterm = require 'wezterm'
 

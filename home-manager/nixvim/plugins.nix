@@ -79,6 +79,7 @@ in
   ];
   extraPlugins = [
     (fromGitHub "3cf0bf406fcbb9b442589c05b306bfe11e1d27b0" "main" "cwebster2/github-coauthors.nvim")
+    (fromGitHub "ff6314d71dd86a96e1cdb5132bb9145d16e5b255" "main" "topaxi/gh-actions.nvim")
   ];
   extraConfigLua = ''
     require('telescope').load_extension('githubcoauthors')

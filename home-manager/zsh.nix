@@ -104,12 +104,12 @@
       }
 
       nc() {
-        tenant=$(narc tenant list | fzf --ansi -1 -q "$1")
+        tenant=$($HOME/go/bin/narc tenant list | fzf --ansi -1 -q "$1")
         filename=$(echo "''${tenant%.*}.yaml" | tr '[:upper:]' '[:lower:]') # lowercase
 
         if [[ -n "$tenant" ]]; then
           ln -sf "$HOME/.kube/tenants/$filename" "$HOME/.kube/config_tenant"
-          narc tenant set "$tenant" && nais device connect
+          $HOME/go/bin/narc tenant set "$tenant" && $HOME/go/bin/nais device connect
           [ -n "$TMUX" ] && tmux refresh-client -S || true
         else
           echo "no tenant selected"
