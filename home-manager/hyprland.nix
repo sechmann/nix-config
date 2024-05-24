@@ -4,8 +4,8 @@
     enable = true;
     settings = {
       monitor = [
-        "DP-3,3840x2160@120.00Hz,0x0,1"
-        "eDP-1,1920x1200@60.03Hz,3840x0,1"
+        "desc:LG Electronics LG TV SSCR2 0x01010101,3840x2160@120.00Hz,0x0,1,bitdepth,10"
+        "desc:AU Optronics 0xF99A,1920x1200@60.03Hz,3840x0,1"
       ];
       decoration = {
         shadow_offset = "0 5";
@@ -17,14 +17,25 @@
       };
 
       "$mod" = "SUPER";
-
       bind =
         [
-          "$mod, F, exec, firefox"
-          "$mod, T, exec, wezterm"
-          "$mod, K, exec, kitty"
-          "$mod, D, exec, ${pkgs.kickoff}/bin/kickoff"
+          "$mod, f, fullscreen, 0" # 0 - fullscreen (takes your entire screen), 1 - maximize (keeps gaps and bar(s)), 2 - fullscreen (same as fullscreen except doesn’t alter window’s internal fullscreen state)
+          "$mod-shift, f, fakefullscreen"
+          "$mod, enter, exec, wezterm"
+          "$mod, d, exec, ${pkgs.kickoff}/bin/kickoff"
           ", Print, exec, grimblast copy area"
+
+          "$mod, h, movefocus, l"
+          "$mod, j, movefocus, d"
+          "$mod, k, movefocus, u"
+          "$mod, l, movefocus, r"
+
+          "$mod_shift, h, movewindow, l"
+          "$mod_shift, j, movewindow, d"
+          "$mod_shift, k, movewindow, u"
+          "$mod_shift, l, movewindow, r"
+
+          "$mod, space, togglefloating, active"
         ]
         ++ (
           # workspaces
@@ -41,7 +52,7 @@
               in
               [
                 "$mod, ${ws}, workspace, ${toString (x + 1)}"
-                "$mod SHIFT, ${ws}, movetoworkspace, ${toString (x + 1)}"
+                "$mod SHIFT, ${ws}, movetoworkspacesilent, ${toString (x + 1)}"
               ]
             ) 10
           )
@@ -52,6 +63,11 @@
         "$mod, mouse:272, movewindow"
         "$mod, mouse:273, resizewindow"
         "$mod ALT, mouse:272, resizewindow"
+      ];
+
+      exec-once = [
+        "eww daemon"
+        "eww open bar_1"
       ];
     };
   };

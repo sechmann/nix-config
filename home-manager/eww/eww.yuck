@@ -16,10 +16,10 @@
     (systray :orientation "v" :icon-size 15 :spacing 10)))
   ;(workspaces :wsp_yuck {screen == 1 ? workspaces_1_yuck : workspaces_2_yuck}))
 
-(deflisten workspaces :initial "[]" "bash ./scripts/get-workspaces")
-(deflisten current_workspace :initial "1" "bash ./scripts/get-active-workspace")
+(deflisten workspaces :initial "[]" "bash ~/.config/eww/scripts/get-workspaces")
+(deflisten current_workspace :initial "1" "bash ~/.config/eww/scripts/get-active-workspace")
 (defwidget workspaces []
-  (eventbox :onscroll "bash ./scripts/change-active-workspace {} ${current_workspace}" :class "workspaces-widget"
+  (eventbox :onscroll "bash ~/.config/eww/scripts/change-active-workspace {} ${current_workspace}" :class "workspaces-widget"
     (box :class "workspaces" :orientation "v"
       (label :text "${workspaces}${current_workspace}" :visible false)
       (for workspace in workspaces
