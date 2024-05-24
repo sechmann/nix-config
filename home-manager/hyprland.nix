@@ -23,7 +23,7 @@
           "$mod, F, exec, firefox"
           "$mod, T, exec, wezterm"
           "$mod, K, exec, kitty"
-          "$mod, D, exec, wofi"
+          "$mod, D, exec, ${pkgs.kickoff}/bin/kickoff"
           ", Print, exec, grimblast copy area"
         ]
         ++ (
