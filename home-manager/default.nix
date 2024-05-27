@@ -3,6 +3,7 @@
   imports = [
     inputs.nixvim.homeManagerModules.nixvim
     ./programs.nix
+    ./lock.nix
     ./sway.nix
     ./hyprland.nix
     ./eww.nix

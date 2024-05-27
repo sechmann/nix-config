@@ -1,16 +1,22 @@
 { pkgs, ... }:
 let
   laptopMon = "desc:AU Optronics 0xF99A";
-  laptopMonSettings = "${laptopMon},1920x1200@60.03Hz,3840x0,1";
-  externalMonSettings = "desc:LG Electronics LG TV SSCR2 0x01010101,3840x2160@120.00Hz,0x0,1,bitdepth,10";
+  laptopMonEnabled = "${laptopMon},1920x1200@60.03Hz,3840x0,1";
+  laptopMonDisabled = "${laptopMon},disable";
+  externalMon = "desc:LG Electronics LG TV SSCR2 0x01010101";
+  externalMonDisabled = "${externalMon},disable";
+  externalMonEnabled = "${externalMon},3840x2160@120.00Hz,0x0,1,bitdepth,10";
+
+  hyprctl = "${pkgs.hyprland}/bin/hyprctl keyword monitor";
+  externalReenable = "${hyprctl} '${externalMon},disable'; ${hyprctl} '${externalMon},3840x2160@120.00Hz,0x0,1,bitdepth,10'";
 in
 {
   wayland.windowManager.hyprland = {
     enable = true;
     settings = {
       monitor = [
-        externalMonSettings
-        laptopMonSettings
+        externalMonEnabled
+        laptopMonEnabled
       ];
       decoration = {
         shadow_offset = "0 5";
@@ -41,6 +47,8 @@ in
           "$mod_shift, l, movewindow, r"
 
           "$mod, space, togglefloating, active"
+          "$mod, r, exec, hyprctl keyword monitor '${externalMonDisabled}'; sleep 1; hyprctl keyword monitor '${externalMonEnabled}'"
+          "$mod_shift, r, exec, ${externalReenable}"
         ]
         ++ (
           # workspaces
@@ -71,8 +79,8 @@ in
       ];
 
       bindl = [
-        ",switch:on:Lid Switch,exec,hyprctl keyword monitor '${externalMonSettings}' && hyprctl keyword monitor '${laptopMon},disable'"
-        ",switch:off:Lid Switch,exec,hyprctl keyword monitor '${externalMonSettings}' && hyprctl keyword monitor '${laptopMonSettings}'"
+        ",switch:on:Lid Switch,exec,hyprctl keyword monitor '${externalMonEnabled}' && hyprctl keyword monitor '${laptopMonDisabled}'"
+        ",switch:off:Lid Switch,exec,hyprctl keyword monitor '${externalMonEnabled}' && hyprctl keyword monitor '${laptopMonEnabled}'"
       ];
 
       exec-once = [
