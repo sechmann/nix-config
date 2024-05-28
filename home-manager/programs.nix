@@ -22,39 +22,42 @@ in
   home.packages =
     [ nvim ]
     ++ (with pkgs; [
-      kickoff
+      (google-cloud-sdk.withExtraComponents [ google-cloud-sdk.components.gke-gcloud-auth-plugin ])
       adriconf
-      kitty
+      brightnessctl
       btop
       btop
       ethtool
-      overmind
       eza
       fd
       file
       firefox
-      google-chrome
       fzf
       gawk
       gnupg
       gnused
       gnutar
-      (google-cloud-sdk.withExtraComponents [ google-cloud-sdk.components.gke-gcloud-auth-plugin ])
-      kubeswitch
+      google-chrome
       iftop
       iotop
       jq
+      kanshi
+      kickoff
+      kitty
       kubectl
       kubelogin
+      kubeswitch
       ldns
+      lix
       lm_sensors
       lsof
       ltrace
       mpv
       nix-output-monitor
+      overmind
       p7zip
-      pavucontrol
       pamixer
+      pavucontrol
       pciutils
       ripgrep
       slack
@@ -70,8 +73,7 @@ in
       yt-dlp
       zip
       zoom-us
-      kanshi
-      lix
+      hyprlock
     ]);
 
   services.mako = {

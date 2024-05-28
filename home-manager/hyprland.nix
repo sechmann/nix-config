@@ -41,6 +41,7 @@ in
           "$mod_shift, r, exec, ${externalReenable}"
 
           "$mod_shift, q, killactive, "
+          "ctrl_alt, l, exec, ${pkgs.hyprlock}/bin/hyprlock"
 
           "$mod, h, movefocus, l"
           "$mod, j, movefocus, d"
@@ -88,6 +89,76 @@ in
       exec-once = [
         "eww daemon"
         "eww open bar_1"
+        "${pkgs.hypridle}/bin/hypridle"
+      ];
+    };
+  };
+  programs.hyprlock = {
+    enable = true;
+    settings = {
+      general = {
+        disable_loading_bar = true;
+        grace = 5;
+        hide_cursor = true;
+        no_fade_in = false;
+      };
+
+      background = [
+        {
+          path = "screenshot";
+          blur_passes = 3;
+          blur_size = 8;
+        }
+      ];
+
+      input-field = [
+        {
+          size = "200, 50";
+          position = "0, -80";
+          monitor = "";
+          dots_center = true;
+          fade_on_empty = true;
+          font_color = "rgb(202, 211, 245)";
+          inner_color = "rgb(91, 96, 120)";
+          outer_color = "rgb(24, 25, 38)";
+          outline_thickness = 2;
+          placeholder_text = "password...";
+          shadow_passes = 1;
+        }
+      ];
+    };
+  };
+  services.hypridle = {
+    enable = true;
+    settings = {
+      general = {
+        lock_cmd = "pidof hyprlock || ${pkgs.hyprlock}/bin/hyprlock";
+        before_sleep_cmd = "${pkgs.systemd}/bin/loginctl lock-session";
+        after_sleep_cmd = "${pkgs.hyprland}/bin/hyprctl dispatch dpms on";
+      };
+      listener = [
+        {
+          timeout = 150;
+          on-timeout = "${pkgs.brightnessctl}/bin/brightnessctl -s set 10";
+          on-resume = "${pkgs.brightnessctl}/bin/brightnessctl -r";
+        }
+        {
+          timeout = 330;
+          before_sleep_cmd = "${pkgs.systemd}/bin/loginctl lock-session";
+        }
+        {
+          timeout = 300;
+          on-timeout = "${pkgs.systemd}/bin/loginctl lock-session";
+        }
+        {
+          timeout = 330;
+          on-timeout = "${pkgs.hyprland}/bin/hyprctl dispatch dpms off";
+          on-resume = "${pkgs.hyprland}/bin/hyprctl dispatch dpms on";
+        }
+        {
+          timeout = 1000;
+          on-timeout = "${pkgs.systemd}/bin/systemctl suspend";
+        }
       ];
     };
   };
