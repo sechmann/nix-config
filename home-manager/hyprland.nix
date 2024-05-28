@@ -32,9 +32,15 @@ in
         [
           "$mod, f, fullscreen, 0" # 0 - fullscreen (takes your entire screen), 1 - maximize (keeps gaps and bar(s)), 2 - fullscreen (same as fullscreen except doesn’t alter window’s internal fullscreen state)
           "$mod-shift, f, fakefullscreen"
-          "$mod, enter, exec, wezterm"
+          "$mod, return, exec, wezterm"
           "$mod, d, exec, ${pkgs.kickoff}/bin/kickoff"
           ", Print, exec, grimblast copy area"
+
+          "$mod, space, togglefloating, active"
+          "$mod, r, exec, hyprctl keyword monitor '${externalMonDisabled}'; sleep 1; hyprctl keyword monitor '${externalMonEnabled}'"
+          "$mod_shift, r, exec, ${externalReenable}"
+
+          "$mod_shift, q, killactive, "
 
           "$mod, h, movefocus, l"
           "$mod, j, movefocus, d"
@@ -45,10 +51,6 @@ in
           "$mod_shift, j, movewindow, d"
           "$mod_shift, k, movewindow, u"
           "$mod_shift, l, movewindow, r"
-
-          "$mod, space, togglefloating, active"
-          "$mod, r, exec, hyprctl keyword monitor '${externalMonDisabled}'; sleep 1; hyprctl keyword monitor '${externalMonEnabled}'"
-          "$mod_shift, r, exec, ${externalReenable}"
         ]
         ++ (
           # workspaces
