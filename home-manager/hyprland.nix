@@ -9,6 +9,11 @@ let
 
   hyprctl = "${pkgs.hyprland}/bin/hyprctl keyword monitor";
   externalReenable = "${hyprctl} '${externalMon},disable'; ${hyprctl} '${externalMon},3840x2160@120.00Hz,0x0,1,bitdepth,10'";
+
+  wallpaper = builtins.fetchurl {
+    url = "https://w.wallhaven.cc/full/we/wallhaven-werowr.png";
+    sha256 = "0dkhzw74m49h5rmmdd59x0m878v1csq73arz75i03hs3pfklhjwj";
+  };
 in
 {
   wayland.windowManager.hyprland = {
@@ -90,6 +95,7 @@ in
         "eww daemon"
         "eww open bar_1"
         "${pkgs.hypridle}/bin/hypridle"
+        "${pkgs.hyprpaper}/bin/hyprpaper"
       ];
     };
   };
@@ -160,6 +166,14 @@ in
           on-timeout = "${pkgs.systemd}/bin/systemctl suspend";
         }
       ];
+    };
+  };
+  services.hyprpaper = {
+    enable = true;
+    settings = {
+      splash = false;
+      preload = [ wallpaper ];
+      wallpaper = [ "${externalMon},${wallpaper}" ];
     };
   };
 }

@@ -26,6 +26,7 @@ in
       adriconf
       brightnessctl
       btop
+      playerctl
       btop
       ethtool
       eza

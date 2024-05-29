@@ -1,133 +1,74 @@
-(defwidget bar [screen]
-  (centerbox :orientation "v"
-    (box :class "segment-top"
-         :valign "start"
-      (top :screen screen))
-    (box :valign "center"
-         :class "middle" 
-      (middle :screen screen))
-    (box :valign "end"
-         :class "segment-bottom" 
-      (bottom :screen screen))))
+(defwidget bar []
+  (centerbox :orientation "h"
+    (workspaces)
+    (music)
+    (sidestuff)))
 
-(defwidget top [screen]
-  (box :orientation "v"
-    (workspaces ) 
-    (systray :orientation "v" :icon-size 15 :spacing 10)))
-  ;(workspaces :wsp_yuck {screen == 1 ? workspaces_1_yuck : workspaces_2_yuck}))
+(defwidget sidestuff []
+  (box :class "sidestuff" :orientation "h" :space-evenly false :halign "end"
+    (metric :label "🔊"
+            :value volume
+            :onchange "amixer -D pulse sset Master {}%")
+    (metric :label ""
+            :value {EWW_RAM.used_mem_perc}
+            :onchange "")
+    (metric :label "💾"
+            :value {round((1 - (EWW_DISK["/"].free / EWW_DISK["/"].total)) * 100, 0)}
+            :onchange "")
+    time))
 
-(deflisten workspaces :initial "[]" "bash ~/.config/eww/scripts/get-workspaces")
-(deflisten current_workspace :initial "1" "bash ~/.config/eww/scripts/get-active-workspace")
 (defwidget workspaces []
-  (eventbox :onscroll "bash ~/.config/eww/scripts/change-active-workspace {} ${current_workspace}" :class "workspaces-widget"
-    (box :class "workspaces" :orientation "v"
-      (label :text "${workspaces}${current_workspace}" :visible false)
-      (for workspace in workspaces
-        (eventbox :onclick "hyprctl dispatch workspace ${workspace.id}"
-          (box :class "workspace-entry ${workspace.id == current_workspace ? "current" : ""} ${workspace.windows > 0 ? "occupied" : "empty"}"
-            (label :text "${workspace.id}")
-            )
-          )
-        )
-      )
-    )
-  )
-
-(defwidget middle [] (time))
-(defwidget time []
-  (box :orientation "v" 
-       :class "time"
-    hour min sec))
-
-
-(defwidget metric [icon ?font-size]
-  (box :class "metric" 
-       :orientation "v"
-    (label :class "metric-icon" 
-           :style {font-size != "" ? "font-size: ${font-size}rem;" : ""} 
-           :text icon)
-    (children)))
-
-(defwidget bottom [screen] 
-  (box :orientation "v"
-       :valign "end"
+  (box :class "workspaces"
+       :orientation "h"
        :space-evenly true
-       :spacing "5"
+       :halign "start"
+       :spacing 10
+    (button :onclick "wmctrl -s 0" 1)
+    (button :onclick "wmctrl -s 1" 2)
+    (button :onclick "wmctrl -s 2" 3)
+    (button :onclick "wmctrl -s 3" 4)
+    (button :onclick "wmctrl -s 4" 5)
+    (button :onclick "wmctrl -s 5" 6)
+    (button :onclick "wmctrl -s 6" 7)
+    (button :onclick "wmctrl -s 7" 8)
+    (button :onclick "wmctrl -s 8" 9)))
 
-    (volume)
-
-    (metric :icon "" 
-            :font-size 0.8
-      "${round((1 - (EWW_DISK["/"].free / EWW_DISK["/"].total)) * 100, 0)}%")
-
-    (metric :icon "" "${round(EWW_RAM.used_mem_perc, 0)}%")
-
-    (metric :icon "" "${round(EWW_CPU.avg, 0)}%")
-
-    (box :class "metric" (date))))
-
-
-(defwidget volume []
-  (box :class "volume-metric"
-       :orientation "v"
+(defwidget music []
+  (box :class "music"
+       :orientation "h"
        :space-evenly false
-       :valign "fill"
-       :vexpand false
-    (scale :orientation "h" 
-           :min 0
-           :max 100 
-           :onchange "pamixer --set-volume $(echo {} | sed 's/\\..*//g')"
-           :value volume)
-    (eventbox :onscroll "if [ '{}' == 'up' ]; then pamixer -i 5; else pamixer -d 5; fi"
-              :vexpand true
-              :valign "fill"
-      (box :orientation "v"
-           :valign "fill"
-           :vexpand true
-        (button :onclick "./audio.sh toggle"
-          (label :text audio_sink))
-        (button :onclick "pavucontrol &"
-          "${volume}%")))))
+       :halign "center"
+    {music != "" ? "🎵${music}" : ""}))
+
+
+(defwidget metric [label value onchange]
+  (box :orientation "h"
+       :class "metric"
+       :space-evenly false
+    (box :class "label" label)
+    (scale :min 0
+           :max 101
+           :active {onchange != ""}
+           :value value
+           :onchange onchange)))
 
 
 
+(deflisten music :initial ""
+  "playerctl --follow metadata --format '{{ artist }} - {{ title }}' || true")
 
-(defwidget large-sym [sym]
-  (label :class "metric-icon large-symbol" :text sym))
+(defpoll volume :interval "1s"
+  "scripts/get-vol")
 
-(defwidget date []
-  (box :orientation "v" 
-       :halign "center" 
-    day_word day month year))
+(defpoll time :interval "10s"
+  "date '+%H:%M %b %d, %Y'")
 
-(defvar audio_sink "")
-
-(deflisten volume :initial "0" "./audio.sh volume")
-
-(defpoll hour :interval "1s" "date +%H")
-(defpoll min  :interval "1s" "date +%M")
-(defpoll sec  :interval "1s" "date +%S")
-
-(defpoll day_word :interval "10m" "date +%a | tr [:upper:] [:lower:]")
-(defpoll day      :interval "10m" "date +%d")
-(defpoll month    :interval "1h"  "date +%m")
-(defpoll year     :interval "1h"  "date +%y")
-
-(defvar workspaces_1_yuck "")
-(defvar workspaces_2_yuck "")
-
-
-(defwindow bar_1
-  :monitor '["<primary>", "DisplayPort-0", "PHL 345B1C", "LG TV SSCR2", "eDP-1"]'
-  :stacking "fg"
-  :geometry (geometry :x 0 :y 0 :width "40px" :height "100%" :anchor "center left")
-  :reserve (struts :distance "40px" :side "left")
-  :exclusive true
-  (bar :screen 1))
-
-(defwindow bar_2
-  :monitor '[2, "HDMI-A-1"]'
-  :geometry (geometry :x 0 :y 0 :width "40px" :height "100%" :anchor "top left")
-  :reserve (struts :distance "40px" :side "left")
-  (bar :screen 2))
-
+(defwindow bar
+  :monitor 0
+	:exclusive true
+  :geometry (geometry :x "0%"
+                      :y "0%"
+                      :width "90%"
+                      :height "10px"
+                      :anchor "top center")
+  (bar))
