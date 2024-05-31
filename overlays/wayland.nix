@@ -1,5 +1,5 @@
 final: prev: {
-  zoom-us = prev.zoom-us.overrideAttrs (oldAttrs: rec {
+  zoom-us = prev.zoom-us.overrideAttrs (oldAttrs: {
     postFixup =
       oldAttrs.postFixup
       + ''
@@ -9,7 +9,7 @@ final: prev: {
       '';
   });
 
-  slack = prev.slack.overrideAttrs (oldAttrs: rec {
+  slack = prev.slack.overrideAttrs (oldAttrs: {
     installPhase =
       oldAttrs.installPhase
       + ''

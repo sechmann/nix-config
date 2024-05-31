@@ -1,10 +1,4 @@
-{
-  config,
-  lib,
-  pkgs,
-  nixpgs,
-  ...
-}:
+{ lib, pkgs, ... }:
 {
   nix = {
     package = pkgs.nixFlakes;
