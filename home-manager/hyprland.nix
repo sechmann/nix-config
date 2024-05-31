@@ -140,7 +140,7 @@ in
       general = {
         lock_cmd = "pidof hyprlock || ${pkgs.hyprlock}/bin/hyprlock";
         before_sleep_cmd = "${pkgs.systemd}/bin/loginctl lock-session";
-        after_sleep_cmd = "${pkgs.hyprland}/bin/hyprctl dispatch dpms on";
+        after_sleep_cmd = "${pkgs.hyprland}/bin/hyprctl dispatch dpms on; ${externalReenable}";
       };
       listener = [
         {
