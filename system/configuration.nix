@@ -18,6 +18,11 @@
     ./keymap.nix
   ];
 
+  fonts.packages = with pkgs; [
+    nerdfonts
+    font-awesome
+  ];
+
   hardware.enableRedistributableFirmware = true;
   nixpkgs.config.allowUnfree = true;
   # Use the systemd-boot EFI boot loader.
@@ -36,11 +41,12 @@
 
   # Select internationalisation properties.
   i18n.defaultLocale = "en_US.UTF-8";
-  # console = {
-  #   font = "Lat2-Terminus16";
-  #   keyMap = "us";
-  #   useXkbConfig = true; # use xkb.options in tty.
-  # };
+  console = {
+    font = "ter-124b";
+    keyMap = lib.mkDefault "us";
+    useXkbConfig = true; # use xkb.options in tty.
+    packages = with pkgs; [ terminus_font ];
+  };
 
   # Enable CUPS to print documents.
   # services.printing.enable = true;
