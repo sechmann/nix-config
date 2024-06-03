@@ -42,8 +42,6 @@ in
           ", Print, exec, grimblast copy area"
 
           "$mod, space, togglefloating, active"
-          "$mod, r, exec, hyprctl keyword monitor '${externalMonDisabled}'; sleep 1; hyprctl keyword monitor '${externalMonEnabled}'"
-          "$mod_shift, r, exec, ${externalReenable}"
 
           "$mod_shift, q, killactive, "
           "ctrl_alt, l, exec, ${pkgs.hyprlock}/bin/hyprlock"
@@ -89,6 +87,8 @@ in
       bindl = [
         ",switch:on:Lid Switch,exec,hyprctl keyword monitor '${externalMonEnabled}' && hyprctl keyword monitor '${laptopMonDisabled}'"
         ",switch:off:Lid Switch,exec,hyprctl keyword monitor '${externalMonEnabled}' && hyprctl keyword monitor '${laptopMonEnabled}'"
+        "$mod, r, exec, hyprctl keyword monitor '${externalMonDisabled}'; sleep 1; hyprctl keyword monitor '${externalMonEnabled}'"
+        "$mod_shift, r, exec, ${externalReenable}"
       ];
 
       exec-once = [
