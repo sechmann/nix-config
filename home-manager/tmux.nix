@@ -43,7 +43,6 @@
     historyLimit = 50000;
     keyMode = "vi";
     mouse = true;
-    newSession = true;
     plugins = with pkgs; [
       tmuxPlugins.mode-indicator
       tmuxPlugins.fzf-tmux-url
