@@ -23,13 +23,13 @@
         action = "help_tags";
         #desc = "[f]find [h]elp";
       };
-      "<leader>fw" = {
-        action = "grep_string";
-        #desc = "[f]ind current [w]ord";
-      };
       "<leader>fg" = {
         action = "live_grep";
-        #desc = "[f]ind by [g]rep";
+        #desc = "[f]ind by [w]ord/[g]rep";
+      };
+      "<leader>fw" = {
+        action = "live_grep";
+        #desc = "[f]ind by [w]ord/[g]rep";
       };
       "<leader>fd" = {
         action = "diagnostics";
