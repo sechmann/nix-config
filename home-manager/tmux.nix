@@ -39,6 +39,7 @@
     '';
     baseIndex = 1;
     clock24 = true;
+    newSession = false;
     escapeTime = 0;
     historyLimit = 50000;
     keyMode = "vi";
