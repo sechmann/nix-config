@@ -7,8 +7,24 @@
         nixd.enable = true;
         gopls = {
           enable = true;
-          extraOptions = {
-            formatting.gofumpt = true;
+          settings = {
+            gopls = {
+              gofumpt = true;
+              codelens = {
+                test = true;
+              };
+              completeUnimported = true;
+              usePlaceholders = true;
+              staticcheck = true;
+              # hints = { };
+              analyses = {
+                unusedparams = true;
+                nilness = true;
+                unusedwrite = true;
+                useany = true;
+                unusedvariable = true;
+              };
+            };
           };
         };
       };
@@ -19,7 +35,6 @@
         };
         lspBuf = {
           K = "hover";
-          gD = "references";
           gr = "references";
           gd = "definition";
           gi = "implementation";
