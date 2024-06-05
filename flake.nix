@@ -39,7 +39,7 @@
     in
     {
       nixosConfigurations = {
-        nixpkgs.overlays = [ (import ./overlays/wayland.nix) ] ++ naisdevice.overlays;
+        nixpkgs.overlays = [ (import ./overlays/wayland.nix) ];
         vegar-nav = nixpkgs.lib.nixosSystem {
           inherit system;
           modules = [
