@@ -1,17 +1,12 @@
-{ ... }:
-{
+{...}: {
   # for a list of formatters: `:help conform-formatters`
   plugins.conform-nvim = {
     enable = true;
     formattersByFt = {
-      asm = [ "asmfmt" ];
-      c = [ "astyle" ];
-      cpp = [ "astyle" ];
       css = [
         "prettierd"
         "prettier"
       ];
-      cmake = [ "cmake_format" ];
       html = [
         "prettierd"
         "prettier"
@@ -20,22 +15,20 @@
         "prettierd"
         "prettier"
       ];
-      javascriptreact = [ "prettier" ];
-      json = [ "prettier" ];
-      lua = [ "stylua" ];
-      markdown = [ "prettier" ];
-      nix = [ "nixfmt" ];
+      json = ["prettier"];
+      lua = ["stylua"];
+      markdown = ["prettier"];
+      nix = ["alejandra"];
       python = [
         "isort"
         "black"
       ];
-      rust = [ "rustfmt" ];
-      sh = [ "shfmt" ];
+      rust = ["rustfmt"];
+      sh = ["shfmt"];
       typescript = [
         "prettierd"
         "prettier"
       ];
-      typescriptreact = [ "prettier" ];
       yaml = [
         "prettierd"
         "prettier"

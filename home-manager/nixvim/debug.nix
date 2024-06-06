@@ -1,5 +1,4 @@
-{ ... }:
-{
+{...}: {
   plugins.dap = {
     enable = true;
   };

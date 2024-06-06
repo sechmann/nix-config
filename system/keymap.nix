@@ -1,9 +1,8 @@
-{ pkgs, ... }:
-{
+{pkgs, ...}: {
   services.xserver.xkb.extraLayouts = {
     us-no = {
       description = "Vegar keys remapping";
-      languages = [ "eng" ];
+      languages = ["eng"];
       symbolsFile = pkgs.writeText "us-no" ''
         default  partial alphanumeric_keys
         xkb_symbols "us-no" {

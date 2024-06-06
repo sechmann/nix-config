@@ -1,6 +1,4 @@
-{ pkgs, ... }:
-{
-
+{pkgs, ...}: {
   # dependencies for eww
   home.packages = with pkgs; [
     bash

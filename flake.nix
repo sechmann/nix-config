@@ -24,48 +24,50 @@
       url = "github:wez/wezterm?dir=nix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    treefmt-nix.url = "github:numtide/treefmt-nix";
   };
 
-  outputs =
-    {
-      nixpkgs,
-      home-manager,
-      kolide-launcher,
-      naisdevice,
-      ...
-    }@inputs:
-    let
-      system = "x86_64-linux";
-    in
-    {
-      nixosConfigurations = {
-        nixpkgs.overlays = [ (import ./overlays/wayland.nix) ];
-        vegar-nav = nixpkgs.lib.nixosSystem {
-          inherit system;
-          modules = [
-            ./system/configuration.nix
-            home-manager.nixosModules.home-manager
-            {
-              home-manager.useGlobalPkgs = true;
-              home-manager.useUserPackages = true;
-              home-manager.extraSpecialArgs = {
-                inherit inputs;
-                inherit system;
-              };
-              home-manager.users.vegar = import ./home-manager;
-            }
+  outputs = {
+    self,
+    nixpkgs,
+    home-manager,
+    kolide-launcher,
+    naisdevice,
+    treefmt-nix,
+    ...
+  } @ inputs: let
+    system = "x86_64-linux";
+    treeFmtEval = treefmt-nix.lib.evalModule nixpkgs.legacyPackages.${system} ./treefmt.nix;
+  in {
+    nixosConfigurations = {
+      vegar-nav = nixpkgs.lib.nixosSystem {
+        inherit system;
+        modules = [
+          {nixpkgs.overlays = [(import ./overlays/wayland.nix)];}
+          ./system/configuration.nix
+          home-manager.nixosModules.home-manager
+          {
+            home-manager.useGlobalPkgs = true;
+            home-manager.useUserPackages = true;
+            home-manager.extraSpecialArgs = {
+              inherit inputs;
+              inherit system;
+            };
+            home-manager.users.vegar = import ./home-manager;
+          }
 
-            (import ./system/kolide.nix { inherit inputs; })
-            kolide-launcher.nixosModules.kolide-launcher
+          (import ./system/kolide.nix {inherit inputs;})
+          kolide-launcher.nixosModules.kolide-launcher
 
-            {
-              services.naisdevice.enable = true;
-              environment.systemPackages = [ naisdevice.packages.${system}.naisdevice ];
-            }
-            naisdevice.nixosModules.naisdevice
-          ];
-        };
+          {
+            services.naisdevice.enable = true;
+            environment.systemPackages = [naisdevice.packages.${system}.naisdevice];
+          }
+          naisdevice.nixosModules.naisdevice
+        ];
       };
-      formatter.x86_64-linux = nixpkgs.legacyPackages.x86_64-linux.nixfmt-rfc-style;
     };
+    formatter.x86_64-linux = treeFmtEval.config.build.wrapper;
+    checks.x86_64-linux.formatting = treeFmtEval.config.build.check self;
+  };
 }

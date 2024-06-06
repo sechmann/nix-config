@@ -1,5 +1,4 @@
-{ pkgs, ... }:
-let
+{pkgs, ...}: let
   laptopMon = "desc:AU Optronics 0xF99A";
   laptopMonEnabled = "${laptopMon},1920x1200@60.03Hz,3840x0,1";
   laptopMonDisabled = "${laptopMon},disable";
@@ -14,8 +13,7 @@ let
     url = "https://w.wallhaven.cc/full/we/wallhaven-werowr.png";
     sha256 = "0dkhzw74m49h5rmmdd59x0m878v1csq73arz75i03hs3pfklhjwj";
   };
-in
-{
+in {
   wayland.windowManager.hyprland = {
     enable = true;
     settings = {
@@ -61,19 +59,17 @@ in
           # binds $mod + [shift +] {1..10} to [move to] workspace {1..10}
           builtins.concatLists (
             builtins.genList (
-              x:
-              let
-                ws =
-                  let
-                    c = (x + 1) / 10;
-                  in
+              x: let
+                ws = let
+                  c = (x + 1) / 10;
+                in
                   builtins.toString (x + 1 - (c * 10));
-              in
-              [
+              in [
                 "$mod, ${ws}, workspace, ${toString (x + 1)}"
                 "$mod SHIFT, ${ws}, movetoworkspacesilent, ${toString (x + 1)}"
               ]
-            ) 10
+            )
+            10
           )
         );
 
@@ -172,8 +168,8 @@ in
     enable = true;
     settings = {
       splash = false;
-      preload = [ wallpaper ];
-      wallpaper = [ "${externalMon},${wallpaper}" ];
+      preload = [wallpaper];
+      wallpaper = ["${externalMon},${wallpaper}"];
     };
   };
 }

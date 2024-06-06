@@ -1,5 +1,4 @@
-{ ... }:
-{
+{...}: {
   home.shellAliases = {
     base64 = "base64 --wrap=0";
     dc = "docker compose";

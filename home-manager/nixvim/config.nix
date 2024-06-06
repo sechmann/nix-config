@@ -1,5 +1,4 @@
-{ ... }:
-{
+{...}: {
   colorschemes.gruvbox.enable = true;
   clipboard.register = "unnamedplus";
 

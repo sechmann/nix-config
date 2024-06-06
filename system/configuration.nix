@@ -1,5 +1,8 @@
-{ lib, pkgs, ... }:
 {
+  lib,
+  pkgs,
+  ...
+}: {
   nix = {
     package = pkgs.nixFlakes;
     extraOptions = ''
@@ -39,11 +42,13 @@
     font = "ter-124b";
     keyMap = lib.mkDefault "us";
     useXkbConfig = true; # use xkb.options in tty.
-    packages = with pkgs; [ terminus_font ];
+    packages = with pkgs; [terminus_font];
   };
 
   # Enable CUPS to print documents.
   # services.printing.enable = true;
+
+  services.upower.enable = true;
 
   # pipewire
   security.rtkit.enable = true;
@@ -94,19 +99,21 @@
     v4l-utils
     wireguard-tools
     networkmanagerapplet
+    hn-text
+    upower
   ];
 
   programs.light.enable = true;
   xdg.portal.wlr.enable = true;
   xdg.portal.config = {
     common = {
-      default = [ "gtk" ];
-      "org.freedesktop.impl.portal.Secret" = [ "gnome-keyring" ];
+      default = ["gtk"];
+      "org.freedesktop.impl.portal.Secret" = ["gnome-keyring"];
     };
   };
 
   # allow swaylock to lock / unlock session
-  security.pam.services.swaylock = { };
+  security.pam.services.swaylock = {};
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.

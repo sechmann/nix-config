@@ -1,5 +1,4 @@
-{ ... }:
-{
+{...}: {
   programs = {
     git = {
       enable = true;
@@ -9,7 +8,7 @@
         key = "~/.ssh/id_ed25519";
         signByDefault = true;
       };
-      attributes = [ "go.sum merge=union" ];
+      attributes = ["go.sum merge=union"];
       extraConfig = {
         rebase.autoStash = true;
         init.defaultBranch = "main";

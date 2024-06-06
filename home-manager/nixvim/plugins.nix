@@ -1,7 +1,9 @@
-{ pkgs, lib, ... }:
-let
-  fromGitHub =
-    rev: ref: repo:
+{
+  pkgs,
+  lib,
+  ...
+}: let
+  fromGitHub = rev: ref: repo:
     pkgs.vimUtils.buildVimPlugin {
       pname = "${lib.strings.sanitizeDerivationName repo}";
       version = ref;
@@ -11,8 +13,7 @@ let
         rev = rev;
       };
     };
-in
-{
+in {
   plugins = {
     gitsigns.enable = true;
     #oil.enable = true;
@@ -23,8 +24,7 @@ in
   };
   extraPackages = with pkgs; [
     # Formatters
-    #alejandra
-    nixfmt-rfc-style
+    alejandra
     asmfmt
     astyle
     black

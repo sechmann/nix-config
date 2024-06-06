@@ -1,5 +1,8 @@
-{ pkgs, lib, ... }:
 {
+  pkgs,
+  lib,
+  ...
+}: {
   programs.waybar = {
     enable = true;
     systemd.enable = true;
@@ -18,7 +21,7 @@
           "sway/mode"
           "wlr/taskbar"
         ];
-        modules-center = [ "sway/window" ];
+        modules-center = ["sway/window"];
         modules-right = [
           "battery"
           "backlight"
@@ -37,7 +40,7 @@
     };
   };
 
-  home.packages = [ pkgs.kanshi ];
+  home.packages = [pkgs.kanshi];
   services.kanshi = {
     enable = true;
     systemdTarget = "sway-session.target";
@@ -77,72 +80,70 @@
       base = true;
     };
     systemd.enable = true;
-    config =
-      let
-        modifier = "Mod4";
-      in
-      {
-        modifier = "${modifier}";
-        keybindings = lib.mkOptionDefault {
-          #"${modifier}+Shift+q" = "kill";
-          #"${modifier}+d" = "exec ${pkgs.dmenu}/bin/dmenu_path | ${pkgs.dmenu}/bin/dmenu | ${pkgs.findutils}/bin/xargs swaymsg exec --";
-          "${modifier}+d" = "exec ${pkgs.kickoff}/bin/kickoff";
-          "Ctrl+Alt+l" = "exec swaylock";
+    config = let
+      modifier = "Mod4";
+    in {
+      modifier = "${modifier}";
+      keybindings = lib.mkOptionDefault {
+        #"${modifier}+Shift+q" = "kill";
+        #"${modifier}+d" = "exec ${pkgs.dmenu}/bin/dmenu_path | ${pkgs.dmenu}/bin/dmenu | ${pkgs.findutils}/bin/xargs swaymsg exec --";
+        "${modifier}+d" = "exec ${pkgs.kickoff}/bin/kickoff";
+        "Ctrl+Alt+l" = "exec swaylock";
+      };
+      fonts = {
+        size = 11.0;
+      };
+      input = {
+        "type:keyboard" = {
+          xkb_layout = "us-no";
         };
-        fonts = {
-          size = 11.0;
-        };
-        input = {
-          "type:keyboard" = {
-            xkb_layout = "us-no";
-          };
-          "type:touchpad" = {
-            natural_scroll = "enabled";
-          };
-        };
-        bars = [ ];
-        terminal = "wezterm";
-        window = {
-          commands = [
-            # zoom wayland
-            {
-              criteria = {
-                app_id = "Zoom Workplace";
-              };
-              command = "floating enable";
-            }
-            {
-              criteria = {
-                app_id = "Zoom Workplace";
-                title = ".*Zoom Meeting";
-              };
-              command = "inhibit_idle visible";
-            }
-            {
-              criteria = {
-                app_id = "Zoom Workplace";
-                title = ".*Zoom Meeting";
-              };
-              command = "floating disable";
-            }
-            # zoom x
-            {
-              criteria = {
-                class = "zoom";
-                title = "(zoom)|(Breakout rooms -.*)";
-              };
-              command = "floating enable";
-            }
-            {
-              criteria = {
-                class = "zoom";
-                title = ".*Zoom Meeting";
-              };
-              command = "inhibit_idle visible";
-            }
-          ];
+        "type:touchpad" = {
+          natural_scroll = "enabled";
         };
       };
+      bars = [];
+      terminal = "wezterm";
+      window = {
+        commands = [
+          # zoom wayland
+          {
+            criteria = {
+              app_id = "Zoom Workplace";
+            };
+            command = "floating enable";
+          }
+          {
+            criteria = {
+              app_id = "Zoom Workplace";
+              title = ".*Zoom Meeting";
+            };
+            command = "inhibit_idle visible";
+          }
+          {
+            criteria = {
+              app_id = "Zoom Workplace";
+              title = ".*Zoom Meeting";
+            };
+            command = "floating disable";
+          }
+          # zoom x
+          {
+            criteria = {
+              class = "zoom";
+              title = "(zoom)|(Breakout rooms -.*)";
+            };
+            command = "floating enable";
+          }
+          {
+            criteria = {
+              class = "zoom";
+              title = ".*Zoom Meeting";
+            };
+            command = "inhibit_idle visible";
+          }
+        ];
+      };
+    };
   };
   services.swayidle = {
     enable = true;

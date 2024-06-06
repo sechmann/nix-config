@@ -4,15 +4,13 @@
   config,
   system,
   ...
-}:
-let
+}: let
   neovimconfig = import ./nixvim;
   nvim = inputs.nixvim.legacyPackages.x86_64-linux.makeNixvimWithModule {
     inherit pkgs;
     module = neovimconfig;
   };
-in
-{
+in {
   imports = [
     ./git.nix
     ./ssh.nix
@@ -20,9 +18,9 @@ in
     ./zsh.nix
   ];
   home.packages =
-    [ nvim ]
+    [nvim]
     ++ (with pkgs; [
-      (google-cloud-sdk.withExtraComponents [ google-cloud-sdk.components.gke-gcloud-auth-plugin ])
+      (google-cloud-sdk.withExtraComponents [google-cloud-sdk.components.gke-gcloud-auth-plugin])
       adriconf
       brightnessctl
       btop
@@ -85,7 +83,7 @@ in
   programs = {
     texlive = {
       enable = true;
-      extraPackages = tpkgs: { inherit (tpkgs) collection-basic; };
+      extraPackages = tpkgs: {inherit (tpkgs) collection-basic;};
     };
     fzf = {
       enable = true;
