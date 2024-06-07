@@ -89,7 +89,7 @@ in {
 
       exec-once = [
         "eww daemon"
-        "eww open bar_1"
+        "eww open bar"
       ];
     };
   };
