@@ -90,8 +90,6 @@ in {
       exec-once = [
         "eww daemon"
         "eww open bar_1"
-        "${pkgs.hypridle}/bin/hypridle"
-        "${pkgs.hyprpaper}/bin/hyprpaper"
       ];
     };
   };
