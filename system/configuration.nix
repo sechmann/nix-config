@@ -11,6 +11,7 @@
   };
   imports = [
     ./hardware-configuration.nix
+    ./nvidia.nix
     ./greetd.nix
     ./keymap.nix
   ];

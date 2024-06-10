@@ -19,10 +19,16 @@
     "sd_mod"
     "sdhci_pci"
   ];
-  boot.initrd.kernelModules = [];
+  boot.initrd.kernelModules = ["i915"];
   boot.kernelPackages = pkgs.linuxPackages_latest;
   boot.kernelModules = ["kvm-intel"];
   boot.extraModulePackages = [];
+
+  # ssd
+  services.fstrim.enable = lib.mkDefault true;
+
+  # battery
+  services.tlp.enable = true;
 
   fileSystems."/" = {
     device = "/dev/disk/by-uuid/c8bba02c-ee8d-4b41-a904-6e4b355a86a0";
@@ -51,4 +57,14 @@
 
   nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
   hardware.cpu.intel.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
+
+  environment.variables = {
+    VDPAU_DRIVER = lib.mkIf config.hardware.opengl.enable (lib.mkDefault "va_gl");
+  };
+
+  hardware.opengl.extraPackages = with pkgs; [
+    intel-vaapi-driver
+    libvdpau-va-gl
+    intel-media-driver
+  ];
 }
