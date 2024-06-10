@@ -82,13 +82,17 @@
     systemd.enable = true;
     config = let
       modifier = "Mod4";
+      fixExternalMonitor = pkgs.writeShellScript "external-monitor.sh" ''
+        swaymsg output '"LG Electronics LG TV SSCR2 0x01010101"' disable
+        swaymsg output '"LG Electronics LG TV SSCR2 0x01010101"' enable
+        swaymsg output '"LG Electronics LG TV SSCR2 0x01010101"' mode 3840x2160@120.000Hz pos 0 0
+      '';
     in {
       modifier = "${modifier}";
       keybindings = lib.mkOptionDefault {
-        #"${modifier}+Shift+q" = "kill";
-        #"${modifier}+d" = "exec ${pkgs.dmenu}/bin/dmenu_path | ${pkgs.dmenu}/bin/dmenu | ${pkgs.findutils}/bin/xargs swaymsg exec --";
         "${modifier}+d" = "exec ${pkgs.kickoff}/bin/kickoff";
         "Ctrl+Alt+l" = "exec swaylock";
+        "${modifier}+r" = "exec ${fixExternalMonitor}";
       };
       fonts = {
         size = 11.0;

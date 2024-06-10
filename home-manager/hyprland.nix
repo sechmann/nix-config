@@ -94,7 +94,7 @@ in {
     };
   };
   programs.hyprlock = {
-    enable = true;
+    enable = false;
     settings = {
       general = {
         disable_loading_bar = true;
@@ -129,7 +129,7 @@ in {
     };
   };
   services.hypridle = {
-    enable = true;
+    enable = false;
     settings = {
       general = {
         lock_cmd = "pidof hyprlock || ${pkgs.hyprlock}/bin/hyprlock";
