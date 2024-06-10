@@ -1,4 +1,29 @@
-{...}: {
+{pkgs, ...}: let
+  selectProject = pkgs.writeShellScript "" ''
+    #!/usr/bin/env bash
+
+    function update_cache() {
+      gcloud projects list --format json > /tmp/fzf_gcloud_projects.json.new
+      mv /tmp/fzf_gcloud_projects.json.new /tmp/fzf_gcloud_projects.json
+    }
+
+    if [[ ! -f /tmp/fzf_gcloud_projects.json ]]; then
+      update_cache
+    else
+      update_cache &
+    fi
+
+    tenant=$(jq -r '.[] |= .labels.tenant | unique[] | .' < /tmp/fzf_gcloud_projects.json | fzf --height=10)
+    if [[ "$tenant" != "null" ]]; then
+      tenant="\"$tenant\""
+    fi
+
+    jq -r --argjson selected_tenant "$tenant" '.[] | select(.labels.tenant == $selected_tenant) | .projectId' < /tmp/fzf_gcloud_projects.json \
+      | fzf \
+      --height=10 \
+      --preview="jq --arg p '{}' '.[] | select(.projectId == \$p)' < /tmp/fzf_gcloud_projects.json"
+  '';
+in {
   home.shellAliases = {
     base64 = "base64 --wrap=0";
     dc = "docker compose";
@@ -26,7 +51,17 @@
       source <(switcher init zsh)
     '';
     profileExtra = ''
-      # vim:ft=zsh
+      fzf-google-project-widget() {
+        LBUFFER="$LBUFFER$(${selectProject})"
+        local ret=$?
+        zle reset-prompt
+        return $ret
+      }
+
+      zle     -N            fzf-google-project-widget
+      bindkey -M emacs '^P' fzf-google-project-widget
+      bindkey -M vicmd '^P' fzf-google-project-widget
+      bindkey -M viins '^P' fzf-google-project-widget
 
       _find_gcp_project_interactive() {
         all_projects="$(gcloud projects list --format=json)"
