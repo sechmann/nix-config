@@ -72,7 +72,6 @@ in {
       yt-dlp
       zip
       zoom-us
-      hyprlock
     ]);
 
   services.mako = {

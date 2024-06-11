@@ -10,12 +10,6 @@
 
     ${pkgs.sway}/bin/sway |& tee sway.log
   '';
-  hyprlandRun = pkgs.writeShellScript "hyprland-run" ''
-    #export XDG_SESSION_TYPE=wayland
-    #export XDG_SESSION_DESKTOP=hyprland
-    #export XDG_CURRENT_DESKTOP=hyprland
-    ${pkgs.hyprland}/bin/Hyprland
-  '';
 in {
   services.greetd = {
     enable = true;
@@ -42,11 +36,5 @@ in {
     [Desktop Entry]
     Name=Sway
     Exec=${swayRun}
-  '';
-
-  environment.etc."greetd/environments.d/hyprland.desktop".text = ''
-    [Desktop Entry]
-    Name=Hyprland
-    Exec=${hyprlandRun}
   '';
 }

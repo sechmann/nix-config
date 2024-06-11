@@ -2,7 +2,9 @@
   pkgs,
   lib,
   ...
-}: {
+}: let
+  tvOutput = "LG Electronics LG TV SSCR2 0x01010101";
+in {
   programs.waybar = {
     enable = true;
     systemd.enable = true;
@@ -14,7 +16,7 @@
         height = 30;
         output = [
           "eDP-1"
-          "DP-3"
+          "${tvOutput}"
         ];
         modules-left = [
           "sway/workspaces"
