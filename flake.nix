@@ -43,7 +43,7 @@
       vegar-nav = nixpkgs.lib.nixosSystem {
         inherit system;
         modules = [
-          {nixpkgs.overlays = [(import ./overlays/wayland.nix)];}
+          {nixpkgs.overlays = [(import ./overlays/packages.nix)];}
           ./system/configuration.nix
           home-manager.nixosModules.home-manager
           {
