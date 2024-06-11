@@ -104,17 +104,13 @@ in {
       enable = true;
       package = inputs.wezterm.packages."${system}".default;
       extraConfig = ''
-        local wezterm = require 'wezterm'
-
-        local config = {
+        return {
         	enable_wayland = true,
         	color_scheme = 'Gruvbox Dark (Gogh)',
           -- font = wezterm.font_with_fallback { { family = 'IntelOne Mono' }, { family = 'codicon' } },
         	window_decorations = 'NONE',
         	use_resize_increments = true,
         	hide_tab_bar_if_only_one_tab = true,
-        	initial_rows = 50,
-        	initial_cols = 170,
         	window_padding = {
         		left = 0,
         		right = 0,
@@ -122,8 +118,6 @@ in {
         		bottom = 0,
         	},
         }
-
-        return config
       '';
     };
 
