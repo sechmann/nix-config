@@ -74,7 +74,14 @@ in {
     ];
   };
 
-  wayland.windowManager.sway = {
+  wayland.windowManager.sway = let
+    modifier = "Mod4";
+    fixExternalMonitor = pkgs.writeShellScript "external-monitor.sh" ''
+      ${pkgs.sway}/bin/swaymsg output '"LG Electronics LG TV SSCR2 0x01010101"' disable
+      ${pkgs.sway}/bin/swaymsg output '"LG Electronics LG TV SSCR2 0x01010101"' enable
+      ${pkgs.sway}/bin/swaymsg output '"LG Electronics LG TV SSCR2 0x01010101"' mode 3840x2160@120.000Hz pos 0 0
+    '';
+  in {
     checkConfig = false; # doesn't work with custom keyboard layout nix-community/home-manager#5311
     enable = true;
     wrapperFeatures = {
@@ -82,19 +89,12 @@ in {
       base = true;
     };
     systemd.enable = true;
-    config = let
-      modifier = "Mod4";
-      fixExternalMonitor = pkgs.writeShellScript "external-monitor.sh" ''
-        swaymsg output '"LG Electronics LG TV SSCR2 0x01010101"' disable
-        swaymsg output '"LG Electronics LG TV SSCR2 0x01010101"' enable
-        swaymsg output '"LG Electronics LG TV SSCR2 0x01010101"' mode 3840x2160@120.000Hz pos 0 0
-      '';
-    in {
+    config = {
       modifier = "${modifier}";
       keybindings = lib.mkOptionDefault {
         "${modifier}+d" = "exec ${pkgs.kickoff}/bin/kickoff";
-        "Ctrl+Alt+l" = "exec swaylock";
-        "${modifier}+r" = "exec ${fixExternalMonitor}";
+        "Ctrl+Alt+l" = "exec ${pkgs.swaylock}/bin/swaylock";
+        "--locked ${modifier}+Shift+r" = "exec ${fixExternalMonitor}";
       };
       fonts = {
         size = 11.0;
@@ -157,29 +157,29 @@ in {
     events = [
       {
         event = "before-sleep";
-        command = "${pkgs.swaylock}/bin/swaylock -f";
+        command = "pidof swaylock || ${pkgs.swaylock}/bin/swaylock -f";
       }
       {
         event = "lock";
-        command = "${pkgs.swaylock}/bin/swaylock -f";
+        command = "pidof swaylock || ${pkgs.swaylock}/bin/swaylock -f";
       }
       {
         event = "after-resume";
-        command = "swaymsg 'output * dpms on';";
+        command = "${pkgs.sway}/bin/swaymsg 'output * dpms on';";
       }
     ];
     timeouts = [
       {
         timeout = 300;
-        command = "${pkgs.swaylock}/bin/swaylock -f";
+        command = "pidof swaylock || ${pkgs.swaylock}/bin/swaylock -f";
       }
       {
         timeout = 320;
         command = "${pkgs.systemd}/bin/systemctl suspend";
       }
       {
-        timeout = 310;
-        command = "swaymsg 'output * dpms off'";
+        timeout = 600;
+        command = "${pkgs.sway}/bin/swaymsg 'output * dpms off'";
       }
     ];
   };
