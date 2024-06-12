@@ -59,6 +59,7 @@ in {
       pavucontrol
       pciutils
       ripgrep
+      signal-desktop
       slack
       spotify
       strace
