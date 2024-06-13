@@ -29,6 +29,7 @@ in {
       btop
       ethtool
       eza
+      flameshot
       fd
       file
       firefox
