@@ -111,6 +111,8 @@
     common = {
       default = ["gtk"];
       "org.freedesktop.impl.portal.Secret" = ["gnome-keyring"];
+      "org.freedesktop.impl.portal.Screencast" = "wlr";
+      "org.freedesktop.impl.portal.Screenshot" = "wlr";
     };
   };
 
