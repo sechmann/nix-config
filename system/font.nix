@@ -1,17 +1,28 @@
-{pkgs, ...}: {
+{
+  lib,
+  pkgs,
+  ...
+}: {
+  console = {
+    font = "ter-124b";
+    keyMap = lib.mkDefault "us";
+    useXkbConfig = true; # use xkb.options in tty.
+    packages = with pkgs; [terminus_font];
+  };
   fonts = {
-    enableDefaultFonts = true;
-    fonts = with pkgs; [
-      #font-awesome_4
+    enableDefaultPackages = true;
+    packages = with pkgs; [
       corefonts # Microsoft free fonts
       dejavu_fonts
       fira
       fira-mono
-      line-awesome
+      font-awesome
       google-fonts
       inconsolata # monospaced
       libertine
+      line-awesome
       mononoki
+      nerdfonts
       nerdfonts
       open-dyslexic
       overpass
