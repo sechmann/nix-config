@@ -48,6 +48,9 @@ in {
       ignoreSpace = true;
     };
     initExtra = ''
+      setopt prompt_subst
+      PROMPT="%~ > "
+
       source <(switcher init zsh)
     '';
     profileExtra = ''
@@ -105,7 +108,7 @@ in {
           echo "set active gcloud account to $account"
         else
           echo "failed to set active account, please try to run the following manually"
-          echo "gcloud config set account \"$account\""
+          echo "gcloud config set account %(!.#.$)\"$account\""
         fi
 
         [ -n "$TMUX" ] && tmux refresh-client -S || true
