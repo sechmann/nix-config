@@ -14,6 +14,7 @@
     ./nvidia.nix
     ./greetd.nix
     ./keymap.nix
+    ./font.nix
   ];
 
   fonts.packages = with pkgs; [
