@@ -23,4 +23,25 @@
     updatetime = 50;
     foldlevelstart = 99;
   };
+
+  keymaps = [
+    {
+      key = "]q";
+      action = "<cmd>cnext<CR>";
+      options = {
+        silent = true;
+        noremap = true;
+        desc = "Quickfix next";
+      };
+    }
+    {
+      key = "[q";
+      action = "<cmd>cprevious<CR>";
+      options = {
+        silent = true;
+        noremap = true;
+        desc = "Quickfix previous";
+      };
+    }
+  ];
 }

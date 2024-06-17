@@ -25,14 +25,13 @@ in {
       azure-cli
       brightnessctl
       btop
-      playerctl
       btop
       ethtool
       eza
-      flameshot
       fd
       file
       firefox
+      flameshot
       fzf
       gawk
       gnupg
@@ -55,11 +54,13 @@ in {
       ltrace
       mpv
       nix-output-monitor
+      obs-studio
       overmind
       p7zip
       pamixer
       pavucontrol
       pciutils
+      playerctl
       ripgrep
       signal-desktop
       slack
