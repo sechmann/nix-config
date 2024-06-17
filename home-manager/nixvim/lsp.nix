@@ -34,7 +34,6 @@
           "[d" = "goto_prev";
         };
         lspBuf = {
-          K = "hover";
           gr = "references";
           gd = "definition";
           gi = "implementation";
