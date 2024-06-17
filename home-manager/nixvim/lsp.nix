@@ -3,7 +3,8 @@
     lsp = {
       enable = true;
       servers = {
-        nixd.enable = true;
+        nil-ls.enable = true;
+        #nixd.enable = true;
         gopls = {
           enable = true;
           settings = {
