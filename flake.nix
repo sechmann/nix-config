@@ -2,28 +2,22 @@
   description = "flake for vegar-nav";
 
   inputs = {
-    nixpkgs = {
-      url = "github:NixOS/nixpkgs/nixos-unstable";
-    };
-    home-manager = {
-      url = "github:nix-community/home-manager";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-    kolide-launcher = {
-      url = "github:kolide/nix-agent";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-    nixvim = {
-      url = "github:nix-community/nixvim";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-    naisdevice = {
-      url = "path:/home/vegar/dev/nais/device/";
-    };
-    wezterm = {
-      url = "github:wez/wezterm?dir=nix";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
+    nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
+    home-manager.url = "github:nix-community/home-manager";
+
+    home-manager.inputs.nixpkgs.follows = "nixpkgs";
+
+    kolide-launcher.url = "github:kolide/nix-agent";
+    kolide-launcher.inputs.nixpkgs.follows = "nixpkgs";
+
+    nixvim.url = "github:nix-community/nixvim";
+    nixvim.inputs.nixpkgs.follows = "nixpkgs";
+
+    naisdevice.url = "path:/home/vegar/dev/nais/device/";
+
+    wezterm.url = "github:wez/wezterm?dir=nix";
+    wezterm.inputs.nixpkgs.follows = "nixpkgs";
+
     treefmt-nix.url = "github:numtide/treefmt-nix";
   };
 
