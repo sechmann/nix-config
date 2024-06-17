@@ -23,6 +23,8 @@
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
+  services.desktopManager.plasma6.enable = true;
+
   networking.hostName = "vegar-nav"; # Define your hostname.
   networking.networkmanager.enable = true; # Easiest to use and most distros use this by default.
 
@@ -54,9 +56,6 @@
   # Enable sound.
   # sound.enable = true;
   # hardware.pulseaudio.enable = true;
-
-  # Enable touchpad support (enabled default in most desktopManager).
-  # services.xserver.libinput.enable = true;
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.vegar = {

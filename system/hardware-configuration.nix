@@ -28,7 +28,7 @@
   services.fstrim.enable = lib.mkDefault true;
 
   # battery
-  services.tlp.enable = true;
+  #services.tlp.enable = true;
 
   fileSystems."/" = {
     device = "/dev/disk/by-uuid/c8bba02c-ee8d-4b41-a904-6e4b355a86a0";
