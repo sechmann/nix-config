@@ -14,7 +14,7 @@
                 test = true;
               };
               completeUnimported = true;
-              usePlaceholders = true;
+              usePlaceholders = false;
               staticcheck = true;
               # hints = { };
               analyses = {
