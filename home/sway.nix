@@ -9,6 +9,150 @@ in {
     enable = true;
     systemd.enable = true;
     systemd.target = "sway-session.target";
+    package = pkgs.waybar.override {
+      cavaSupport = false;
+      hyprlandSupport = false;
+      mpdSupport = false;
+      mprisSupport = false;
+      pulseSupport = false;
+      sndioSupport = false;
+    };
+    style = ''
+      /* Universal styling */
+      * {
+        border: none;
+        border-radius: 0;
+        font-family:
+          JetBrainsMono Nerd Font,
+          Helvetica,
+          Arial,
+          sans-serif;
+        font-size: 16px;
+        min-height: 16px;
+      }
+
+      /* Main Waybar window styling */
+      window#waybar {
+        background-color: rgba(0, 0, 0, 0.5);
+        color: #cccccc;
+        transition: background-color 0.5s;
+      }
+
+      window#waybar.hidden {
+        opacity: 0.2;
+      }
+
+      /* Workspace button styling */
+      #workspaces button {
+        padding: 0 5px;
+        margin-right: 1px;
+        color: #555555;
+        border-radius: 4px;
+        transition:
+          background-color 0.3s ease,
+          color 0.3s ease;
+        background: rgba(0, 0, 0, 0.1);
+      }
+
+      #workspaces button:hover {
+        background-color: rgba(50, 50, 50, 0.5);
+        color: #ffffff;
+      }
+
+      #workspaces button.active {
+        background: linear-gradient(
+          rgba(255, 255, 255, 0.6),
+          rgba(255, 255, 255, 0.5)
+        );
+        color: #000000;
+        text-shadow: 0px 1px 0 rgba(255, 255, 255, 0.35);
+      }
+
+      #workspaces button.urgent {
+        background-color: #fb4934;
+        color: #282828;
+        animation: urgentBlink 1s linear infinite alternate;
+      }
+
+      @keyframes urgentBlink {
+        to {
+          background-color: #fb6655;
+        }
+      }
+
+      /* Mode styling */
+      #mode {
+        background-color: #64727d;
+        border-bottom: 3px solid #ffffff;
+      }
+
+      /* General module styling */
+      #clock,
+      #battery,
+      #backlight,
+      #network,
+      #pulseaudio,
+      #mode,
+      #mpd {
+        margin: 0 0px;
+      }
+
+      #clock {
+        padding-left: 10px;
+        padding-right: 10px;
+      }
+
+      #network {
+        padding-left: 20px;
+        padding-right: 10px;
+      }
+
+      /* Module specific styling with shared background and color */
+      #clock,
+      #custom-mousebattery,
+      #battery,
+      #battery.charging,
+      #backlight,
+      #bluetooth,
+      #network,
+      #network.disconnected,
+      #pulseaudio,
+      #pulseaudio.muted,
+      #wireplumber,
+      #tray {
+        background: linear-gradient(
+          rgba(255, 255, 255, 0.6),
+          rgba(255, 255, 255, 0.5)
+        );
+        color: #000000;
+        text-shadow: 0px 1px 0 rgba(255, 255, 255, 0.35);
+        font-family: JetBrainsMono Nerd Font;
+        font-size: 14px;
+      }
+
+      #battery.critical:not(.charging) {
+        background-color: #282828;
+        color: #282828;
+        animation: blink 1s linear infinite alternate;
+      }
+
+      @keyframes blink {
+        to {
+          background-color: #ebdbb2;
+          color: #282828;
+        }
+      }
+
+      label:focus {
+        background-color: #000000;
+      }
+
+      #custom-mousebattery {
+        border-radius: 5px 0px 0px 5px;
+        padding-left: 10px;
+        padding-right: 20px;
+      }
+    '';
     settings = {
       mainBar = {
         layer = "top";
@@ -21,17 +165,16 @@ in {
         modules-left = [
           "sway/workspaces"
           "sway/mode"
-          "wlr/taskbar"
         ];
         modules-center = ["sway/window"];
         modules-right = [
+          "tray"
           "battery"
           "backlight"
           "network"
           "bluetooth"
           "wireplumber"
           "clock"
-          "tray"
         ];
 
         "sway/workspaces" = {
