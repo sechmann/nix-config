@@ -67,6 +67,7 @@ in {
       spotify
       strace
       sysstat
+      sqlitebrowser
       tree
       unzip
       usbutils
