@@ -47,7 +47,7 @@
               inherit inputs;
               inherit system;
             };
-            home-manager.users.vegar = import ./home-manager;
+            home-manager.users.vegar = import ./home;
           }
 
           (import ./system/kolide.nix {inherit inputs;})
