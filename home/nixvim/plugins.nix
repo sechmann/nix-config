@@ -20,6 +20,7 @@ in {
     undotree.enable = true;
     fugitive.enable = true;
     which-key.enable = true;
+    lsp-status.enable = true;
   };
   extraPackages = with pkgs; [
     # Formatters
