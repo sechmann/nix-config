@@ -21,16 +21,20 @@
         '';
         sources = [
           {
-            name = "nvim_lsp";
+            name = "nvim_lsp_signature_help";
             groupIndex = 1;
+          }
+          {
+            name = "nvim_lsp";
+            groupIndex = 2;
           }
           {
             name = "path";
-            groupIndex = 1;
+            groupIndex = 3;
           }
           {
             name = "buffer";
-            groupIndex = 2;
+            groupIndex = 3;
           }
         ];
       };

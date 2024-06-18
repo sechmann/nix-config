@@ -20,7 +20,6 @@ in {
     undotree.enable = true;
     fugitive.enable = true;
     which-key.enable = true;
-    copilot-vim.enable = true;
   };
   extraPackages = with pkgs; [
     # Formatters
