@@ -38,6 +38,7 @@ in {
     show_cert = "openssl x509 -noout -text -in";
     t = "tmux";
     tf = "terraform";
+    rebuild-laptop = "sudo ls > /dev/null; sudo nixos-rebuild --fast --flake /etc/nixos#vegar-nav --show-trace switch |& nom";
   };
 
   programs.zsh = {
