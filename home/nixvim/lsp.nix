@@ -12,7 +12,7 @@
           settings = {
             gopls = {
               gofumpt = true;
-              codelens = {
+              codelenses = {
                 test = true;
               };
               completeUnimported = true;
