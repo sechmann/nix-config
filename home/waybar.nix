@@ -1,6 +1,4 @@
-{pkgs, ...}: let
-  tvOutput = "LG Electronics LG TV SSCR2 0x01010101";
-in {
+{pkgs, ...}: {
   programs.waybar = {
     enable = true;
     systemd.enable = true;
@@ -230,19 +228,19 @@ in {
           #"on-click" = "ags -t quicksettings";
         };
         "wireplumber" = {
-          "format" = "{icon} {volume}% {format_source}";
-          "format-bluetooth" = " {icon} {volume}% {format_source}";
-          "format-bluetooth-muted" = "  {icon} {format_source}";
-          "format-muted" = "  {format_source}";
-          "format-source" = " {volume}%";
-          "format-source-muted" = "";
-          "format-icons" = {
-            "default" = [
-              ""
-              ""
-              ""
-            ];
-          };
+          # "format" = "{icon} {volume}% {format_source}";
+          # "format-bluetooth" = " {icon} {volume}% {format_source}";
+          # "format-bluetooth-muted" = "  {icon} {format_source}";
+          # "format-muted" = "  {format_source}";
+          # "format-source" = " {volume}%";
+          # "format-source-muted" = "";
+          # "format-icons" = {
+          #   "default" = [
+          #     ""
+          #     ""
+          #     ""
+          #   ];
+          # };
           "on-click" = "pavucontrol";
         };
         "custom/weather" = {
