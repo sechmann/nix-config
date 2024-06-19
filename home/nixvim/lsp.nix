@@ -1,6 +1,8 @@
 {...}: {
   plugins = {
-    lspsaga.enable = true;
+    lspsaga = {
+      enable = true;
+    };
 
     lsp = {
       enable = true;
