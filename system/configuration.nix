@@ -76,21 +76,21 @@
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
-    grim
-    libinput
-    slurp
-    wl-clipboard
+    curl
     docker
     docker-compose
-    mako
-    wget
-    curl
-    vim
-    v4l-utils
-    wireguard-tools
-    networkmanagerapplet
+    grim
     hn-text
+    libinput
+    mako
+    networkmanagerapplet
+    slurp
     upower
+    v4l-utils
+    vim
+    wget
+    wireguard-tools
+    wl-clipboard
   ];
 
   programs.light.enable = true;
