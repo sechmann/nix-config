@@ -1,17 +1,17 @@
 final: prev: {
-  zoom-us = prev.zoom-us.overrideAttrs (oldAttrs: {
-    src = prev.fetchurl {
-      url = "https://zoom.us/client/6.1.0.198/zoom_x86_64.pkg.tar.xz";
-      hash = "sha256-R4f0dnwqkODFeo8mPBecAI/AGQLwYkcNtJq6UVXCPfI=";
-    };
-    postFixup =
-      oldAttrs.postFixup
-      + ''
-        mv $out/bin/{zoom,zoom-x11}
-        makeWrapper $out/bin/zoom-x11 $out/bin/zoom \
-          --unset XDG_SESSION_TYPE
-      '';
-  });
+  # zoom-us = prev.zoom-us.overrideAttrs (oldAttrs: {
+  #   src = prev.fetchurl {
+  #     url = "https://zoom.us/client/6.1.0.198/zoom_x86_64.pkg.tar.xz";
+  #     hash = "sha256-R4f0dnwqkODFeo8mPBecAI/AGQLwYkcNtJq6UVXCPfI=";
+  #   };
+  #   postFixup =
+  #     oldAttrs.postFixup
+  #     + ''
+  #       mv $out/bin/{zoom,zoom-x11}
+  #       makeWrapper $out/bin/zoom-x11 $out/bin/zoom \
+  #         --unset XDG_SESSION_TYPE
+  #     '';
+  # });
 
   slack = prev.slack.overrideAttrs (oldAttrs: {
     installPhase =
