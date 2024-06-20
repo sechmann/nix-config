@@ -21,6 +21,7 @@ in {
     fugitive.enable = true;
     which-key.enable = true;
     lsp-status.enable = true;
+    neotest.enable = true;
   };
   extraPackages = with pkgs; [
     # Formatters
