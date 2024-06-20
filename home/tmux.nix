@@ -4,6 +4,8 @@
     extraConfig = ''
       set -g @fzf-url-bind 'u'
 
+      set -g default-terminal "''${TERM}"
+
       unbind-key &
       unbind-key q
       bind-key q kill-window

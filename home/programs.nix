@@ -110,18 +110,19 @@ in {
       package = inputs.wezterm.packages."${system}".default;
       extraConfig = ''
         return {
-        	enable_wayland = true,
-        	color_scheme = 'Gruvbox Dark (Gogh)',
+          enable_wayland = true,
+          color_scheme = 'Gruvbox Dark (Gogh)',
           -- font = wezterm.font_with_fallback { { family = 'IntelOne Mono' }, { family = 'codicon' } },
-        	window_decorations = 'NONE',
-        	use_resize_increments = true,
-        	hide_tab_bar_if_only_one_tab = true,
-        	window_padding = {
-        		left = 0,
-        		right = 0,
-        		top = 0,
-        		bottom = 0,
-        	},
+          window_decorations = 'NONE',
+          use_resize_increments = true,
+          hide_tab_bar_if_only_one_tab = true,
+          term = 'wezterm',
+          window_padding = {
+            left = 0,
+            right = 0,
+            top = 0,
+            bottom = 0,
+          },
         }
       '';
     };
