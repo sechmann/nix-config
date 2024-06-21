@@ -40,6 +40,7 @@ in {
       gnutar
       google-chrome
       iftop
+      imagemagick
       iotop
       jq
       kanshi
@@ -67,9 +68,9 @@ in {
       signal-desktop
       slack
       spotify
+      sqlitebrowser
       strace
       sysstat
-      sqlitebrowser
       tree
       unzip
       usbutils
