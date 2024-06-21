@@ -118,11 +118,11 @@
     events = [
       {
         event = "before-sleep";
-        command = "${pkgs.playerctl}/bin/playerctl pause; if pgrep -x swaylock; then ${pkgs.swaylock}/bin/swaylock -f; fi";
+        command = "${pkgs.playerctl}/bin/playerctl pause; if ! pgrep -x swaylock; then ${pkgs.swaylock}/bin/swaylock -f; fi";
       }
       {
         event = "lock";
-        command = "${pkgs.playerctl}/bin/playerctl pause; if pgrep -x swaylock; then ${pkgs.swaylock}/bin/swaylock -f; fi";
+        command = "${pkgs.playerctl}/bin/playerctl pause; if ! pgrep -x swaylock; then ${pkgs.swaylock}/bin/swaylock -f; fi";
       }
       {
         event = "after-resume";
@@ -132,7 +132,7 @@
     timeouts = [
       {
         timeout = 300;
-        command = "${pkgs.playerctl}/bin/playerctl pause; if pgrep -x swaylock; then ${pkgs.swaylock}/bin/swaylock -f; fi";
+        command = "${pkgs.playerctl}/bin/playerctl pause; if ! pgrep -x swaylock; then ${pkgs.swaylock}/bin/swaylock -f; fi";
       }
       {
         timeout = 320;
