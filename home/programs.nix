@@ -29,6 +29,7 @@ in {
       ethtool
       eza
       fd
+      feh
       file
       firefox
       flameshot
@@ -52,6 +53,7 @@ in {
       lm_sensors
       lsof
       ltrace
+      lynx
       mpv
       nix-output-monitor
       obs-studio
