@@ -20,21 +20,18 @@
           end
         '';
         sources = [
+          {name = "nvim_lsp_signature_help";}
           {
-            name = "nvim_lsp_signature_help";
+            name = "nvim_lsp";
             groupIndex = 1;
           }
           {
-            name = "nvim_lsp";
+            name = "path";
             groupIndex = 2;
           }
           {
-            name = "path";
-            groupIndex = 3;
-          }
-          {
             name = "buffer";
-            groupIndex = 3;
+            groupIndex = 2;
           }
         ];
       };
