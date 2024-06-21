@@ -49,6 +49,7 @@ in {
       kubectl
       kubelogin
       kubeswitch
+      ladybird
       ldns
       lix
       lm_sensors
