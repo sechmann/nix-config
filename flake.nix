@@ -19,6 +19,9 @@
     wezterm.inputs.nixpkgs.follows = "nixpkgs";
 
     treefmt-nix.url = "github:numtide/treefmt-nix";
+
+    minimal-tmux.url = "github:niksingh710/minimal-tmux-status";
+    minimal-tmux.inputs.nixpkgs.follows = "nixpkgs";
   };
 
   outputs = {
@@ -37,7 +40,7 @@
       vegar-nav = nixpkgs.lib.nixosSystem {
         inherit system;
         modules = [
-          {nixpkgs.overlays = [(import ./overlays/packages.nix)];}
+          {nixpkgs.overlays = [(import ./overlays/packages.nix inputs)];}
           ./system/configuration.nix
           home-manager.nixosModules.home-manager
           {

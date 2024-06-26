@@ -1,4 +1,4 @@
-final: prev: {
+inputs: final: prev: {
   # zoom-us = prev.zoom-us.overrideAttrs (oldAttrs: {
   #   src = prev.fetchurl {
   #     url = "https://zoom.us/client/6.1.0.198/zoom_x86_64.pkg.tar.xz";
@@ -33,5 +33,9 @@ final: prev: {
       sha256 = "sha256-if+r2i3dC/rzHaih3INiAQYy5VmyGdV4XaNzwpn5XBA=";
     };
     vendorHash = "sha256-lhghteKspXK1WSZ3dVHaTgx2BRx9S7yGNbvRYZKeA+s=";
+  };
+
+  customTmuxPlugins = {
+    minimal-tmux = {plugin = inputs.minimal-tmux.packages.${final.pkgs.system}.default;};
   };
 }

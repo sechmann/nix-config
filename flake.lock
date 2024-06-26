@@ -340,6 +340,26 @@
         "type": "github"
       }
     },
+    "minimal-tmux": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1718553171,
+        "narHash": "sha256-cwWoKsiDLSlSLis5tzqP2kFwTbl9PlzMYNdo2lDk0So=",
+        "owner": "niksingh710",
+        "repo": "minimal-tmux-status",
+        "rev": "131306e6924a8e71dfc6be20dd1a10441248c690",
+        "type": "github"
+      },
+      "original": {
+        "owner": "niksingh710",
+        "repo": "minimal-tmux-status",
+        "type": "github"
+      }
+    },
     "naisdevice": {
       "inputs": {
         "devshell": "devshell",
@@ -350,7 +370,7 @@
       },
       "locked": {
         "lastModified": 0,
-        "narHash": "sha256-d3sBNJTiB0dvC5pG7AsyFYtiKjTeECB08Zp20tVMpuw=",
+        "narHash": "sha256-Nx47fbIIJ2WCIECkWtrBg2q0mAi5bGgvO9rBAc/I/h8=",
         "path": "/home/vegar/dev/nais/device/",
         "type": "path"
       },
@@ -503,6 +523,7 @@
       "inputs": {
         "home-manager": "home-manager",
         "kolide-launcher": "kolide-launcher",
+        "minimal-tmux": "minimal-tmux",
         "naisdevice": "naisdevice",
         "nixpkgs": "nixpkgs_4",
         "nixvim": "nixvim",

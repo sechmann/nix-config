@@ -46,8 +46,9 @@
     keyMode = "vi";
     mouse = true;
     plugins = with pkgs; [
-      tmuxPlugins.mode-indicator
+      #tmuxPlugins.mode-indicator
       tmuxPlugins.fzf-tmux-url
+      customTmuxPlugins.minimal-tmux
     ];
     prefix = "C-f";
   };
