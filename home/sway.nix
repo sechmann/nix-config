@@ -71,43 +71,22 @@
       bars = [];
       terminal = "wezterm";
       window = {
-        commands = [
-          # zoom wayland
-          {
-            criteria = {
-              app_id = "Zoom Workplace";
-            };
-            command = "floating enable";
-          }
-          {
-            criteria = {
-              app_id = "Zoom Workplace";
-              title = ".*Zoom Meeting";
-            };
-            command = "inhibit_idle visible";
-          }
-          {
-            criteria = {
-              app_id = "Zoom Workplace";
-              title = ".*Zoom Meeting";
-            };
-            command = "floating disable";
-          }
-          # zoom x
-          {
+        commands = let
+          for_zoom_window = title: command: {
             criteria = {
               class = "zoom";
-              title = "(zoom)|(Breakout rooms -.*)";
+              title = title;
             };
-            command = "floating enable";
-          }
-          {
-            criteria = {
-              class = "zoom";
-              title = ".*Zoom Meeting";
-            };
-            command = "inhibit_idle visible";
-          }
+            command = command;
+          };
+        in [
+          # For pop up notification windows that don't use notifications api
+          (for_zoom_window "^zoom$" "border none, floating enable")
+          # For specific Zoom windows
+          (for_zoom_window "^(Zoom|About)$" "border pixel, floating enable")
+          (for_zoom_window "Settings" "floating enable, floating_minimum_size 960 x 700")
+          # Open Zoom Meeting windows on a new workspace (a bit hacky)
+          (for_zoom_window "Zoom Meeting(.*)?" "workspace next_on_output --create, move container to workspace current, floating disable, inhibit_idle visible")
         ];
       };
     };
