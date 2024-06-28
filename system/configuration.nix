@@ -1,8 +1,4 @@
-{
-  lib,
-  pkgs,
-  ...
-}: {
+{pkgs, ...}: {
   nix = {
     package = pkgs.nixFlakes;
     extraOptions = ''
@@ -15,6 +11,7 @@
     ./greetd.nix
     ./keymap.nix
     ./font.nix
+    ./fido2ble-to-uhid.nix
   ];
 
   hardware.enableRedistributableFirmware = true;
