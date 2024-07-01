@@ -4,7 +4,7 @@
     enableTelescope = true;
     keymaps = {
       addFile = "<leader>ha";
-      cmdToggleQuickMenu = "";
+      cmdToggleQuickMenu = "<leader>hc";
       toggleQuickMenu = "<leader>ht";
       navFile = {
         "1" = "<C-1>";

@@ -25,6 +25,7 @@
             criteria = "LG Electronics LG TV SSCR2 0x01010101";
             mode = "3840x2160@120.000Hz";
             position = "0,0";
+            status = "enable";
           }
           {
             criteria = "eDP-1";
@@ -56,7 +57,16 @@
         "${modifier}+d" = "exec ${pkgs.kickoff}/bin/kickoff";
         "Ctrl+Alt+l" = "exec ${pkgs.swaylock}/bin/swaylock";
         "--locked ${modifier}+Shift+r" = "exec ${fixExternalMonitor}";
+        "XF86AudioNext" = "exec ${pkgs.playerctl}/bin/playerctl -p spotify next";
+        "XF86AudioPrev" = "exec ${pkgs.playerctl}/bin/playerctl -p spotify previous";
+        "XF86AudioPlay" = "exec ${pkgs.playerctl}/bin/playerctl -p spotify play-pause";
       };
+      keycodebindings = {
+        #"171" = "exec ${pkgs.playerctl}/bin/playerctl -p spotify next";
+        #"173" = "exec ${pkgs.playerctl}/bin/playerctl -p spotify play-pause";
+        #"172" = "exec ${pkgs.playerctl}/bin/playerctl -p spotify previous";
+      };
+
       fonts = {
         size = 11.0;
       };
