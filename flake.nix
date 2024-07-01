@@ -60,7 +60,7 @@
             services.naisdevice.enable = true;
             environment.systemPackages = [naisdevice.packages.${system}.naisdevice];
           }
-          naisdevice.nixosModules.default
+          naisdevice.nixosModules.naisdevice
         ];
       };
     };
