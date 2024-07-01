@@ -12,6 +12,7 @@
     ./keymap.nix
     ./font.nix
     ./fido2ble-to-uhid.nix
+    ./steam.nix
   ];
 
   hardware.enableRedistributableFirmware = true;

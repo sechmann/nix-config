@@ -65,7 +65,6 @@ in {
       pavucontrol
       pciutils
       playerctl
-      steam
       ripgrep
       signal-desktop
       slack
