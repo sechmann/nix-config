@@ -11,5 +11,6 @@
     ./plugins.nix
     ./telescope.nix
     ./treesitter.nix
+    ./harpoon.nix
   ];
 }
