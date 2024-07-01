@@ -70,23 +70,38 @@
       };
       bars = [];
       terminal = "wezterm";
+      gaps = {
+        outer = 10;
+        inner = 5;
+        smartBorders = "on";
+      };
       window = {
         commands = let
-          for_zoom_window = title: command: {
+          for_window_app_id = app_id: title: command: {
             criteria = {
-              class = "zoom";
+              app_id = app_id;
+              title = title;
+            };
+            command = command;
+          };
+          for_window_class = class: title: command: {
+            criteria = {
+              class = class;
               title = title;
             };
             command = command;
           };
         in [
           # For pop up notification windows that don't use notifications api
-          (for_zoom_window "^zoom$" "border none, floating enable")
+          (for_window_class "zoom" "^zoom$" "border none, floating enable")
           # For specific Zoom windows
-          (for_zoom_window "^(Zoom|About)$" "border pixel, floating enable")
-          (for_zoom_window "Settings" "floating enable, floating_minimum_size 960 x 700")
+          (for_window_class "zoom" "^(Zoom|About)$" "border pixel, floating enable")
+          (for_window_class "zoom" "Settings" "floating enable, floating_minimum_size 960 x 700")
           # Open Zoom Meeting windows on a new workspace (a bit hacky)
-          (for_zoom_window "Zoom Meeting(.*)?" "workspace next_on_output --create, move container to workspace current, floating disable, inhibit_idle visible")
+          (for_window_class "zoom" "Zoom Meeting(.*)?" "workspace next_on_output --create, move container to workspace current, floating disable, inhibit_idle visible")
+          # other
+          (for_window_app_id "firefox" ".*" "border pixel 2")
+          (for_window_app_id "org.wezfurlong.wezterm" ".*" "border pixel 2")
         ];
       };
     };
