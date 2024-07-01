@@ -65,6 +65,7 @@ in {
       pavucontrol
       pciutils
       playerctl
+      steam
       ripgrep
       signal-desktop
       slack
@@ -75,6 +76,7 @@ in {
       tree
       unzip
       usbutils
+      weechat
       which
       xz
       yq-go
