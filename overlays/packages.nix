@@ -1,15 +1,20 @@
 inputs: final: prev: {
   # zoom-us = prev.zoom-us.overrideAttrs (oldAttrs: {
   #   src = prev.fetchurl {
-  #     url = "https://zoom.us/client/6.1.0.198/zoom_x86_64.pkg.tar.xz";
-  #     hash = "sha256-R4f0dnwqkODFeo8mPBecAI/AGQLwYkcNtJq6UVXCPfI=";
+  #     url = "https://zoom.us/client/6.1.1.443/zoom_x86_64.pkg.tar.xz";
+  #     hash = "sha256-2FOAZ3MKusouuWvhxFEcqX+2e+PCF4N5zaz7mc9Mnq4=";
   #   };
+  #   #installPhase = ''
+  #   #  mkdir $out
+  #   #  tar -C $out -xf $src
+  #   #  # commented out this
+  #   #  #mv $out/usr/* $out/
+  #   #'';
   #   postFixup =
   #     oldAttrs.postFixup
   #     + ''
-  #       mv $out/bin/{zoom,zoom-x11}
-  #       makeWrapper $out/bin/zoom-x11 $out/bin/zoom \
-  #         --unset XDG_SESSION_TYPE
+  #       makeWrapper $out/bin/zoom $out/bin/zoom-fake-gnome \
+  #         --set XDG_SESSION_TYPE=gnome
   #     '';
   # });
 
