@@ -1,4 +1,5 @@
 {pkgs, ...}: {
+  home.packages = [pkgs.tmux-xpanes];
   programs.tmux = {
     enable = true;
     extraConfig = ''
