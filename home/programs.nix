@@ -52,7 +52,6 @@ in {
       lynx
       mpv
       nix-output-monitor
-      obs-studio
       overmind
       p7zip
       pamixer

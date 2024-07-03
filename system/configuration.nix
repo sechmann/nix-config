@@ -1,4 +1,8 @@
-{pkgs, ...}: {
+{
+  pkgs,
+  config,
+  ...
+}: {
   nix = {
     package = pkgs.nixFlakes;
     extraOptions = ''
@@ -13,6 +17,7 @@
     ./font.nix
     ./fido2ble-to-uhid.nix
     ./steam.nix
+    ./obs.nix
   ];
 
   hardware.enableRedistributableFirmware = true;
