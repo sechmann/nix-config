@@ -7,8 +7,8 @@
     lsp = {
       enable = true;
       servers = {
-        nil-ls.enable = true;
-        #nixd.enable = true;
+        #nil-ls.enable = true;
+        nixd.enable = true;
         elmls.enable = true;
         gopls = {
           enable = true;
