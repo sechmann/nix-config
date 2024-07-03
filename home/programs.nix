@@ -11,12 +11,6 @@
     module = neovimconfig;
   };
 in {
-  imports = [
-    ./git.nix
-    ./ssh.nix
-    ./tmux.nix
-    ./zsh.nix
-  ];
   home.packages =
     [nvim]
     ++ (with pkgs; [
