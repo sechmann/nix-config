@@ -9,6 +9,7 @@
       servers = {
         nil-ls.enable = true;
         #nixd.enable = true;
+        elmls.enable = true;
         gopls = {
           enable = true;
           settings = {
