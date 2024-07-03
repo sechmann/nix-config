@@ -73,6 +73,7 @@ in {
       strace
       sysstat
       tree
+      terraform
       unzip
       usbutils
       weechat
