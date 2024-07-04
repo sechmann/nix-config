@@ -44,4 +44,5 @@
       };
     }
   ];
+  extraConfigLua = builtins.readFile ./lua/statusline.lua;
 }
