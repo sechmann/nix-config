@@ -1,6 +1,7 @@
 {inputs, ...}: {
   imports = [
     inputs.nixvim.homeManagerModules.nixvim
+    ./browser.nix
     ./dots.nix
     ./git.nix
     ./programs.nix
