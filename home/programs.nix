@@ -20,6 +20,7 @@ in {
       brightnessctl
       btop
       btop
+      droidcam
       ethtool
       eza
       fd
@@ -65,8 +66,8 @@ in {
       sqlitebrowser
       strace
       sysstat
-      tree
       terraform
+      tree
       unzip
       usbutils
       weechat

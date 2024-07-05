@@ -58,6 +58,10 @@
   nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
   hardware.cpu.intel.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
 
+  # webcam
+  #hardware.ipu6.enable = true;
+  #hardware.ipu6.platform = "ipu6ep";
+
   environment.variables = {
     VDPAU_DRIVER = lib.mkIf config.hardware.graphics.enable (lib.mkDefault "va_gl");
   };
