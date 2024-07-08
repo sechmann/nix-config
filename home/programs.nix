@@ -5,10 +5,9 @@
   system,
   ...
 }: let
-  neovimconfig = import ./nixvim;
   nvim = inputs.nixvim.legacyPackages.x86_64-linux.makeNixvimWithModule {
     inherit pkgs;
-    module = neovimconfig;
+    module = import ./nixvim;
   };
 in {
   home.packages =
