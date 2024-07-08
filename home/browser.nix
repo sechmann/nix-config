@@ -1,5 +1,5 @@
-{...}: let
-  browser = builtins.readFile "scripts/intercept-browser.sh";
+{pkgs, ...}: let
+  browser = pkgs.writeShellScript "intercept-browser" (builtins.readFile ./scripts/intercept-browser.sh);
 in {
   xdg = {
     desktopEntries.intercept-browser = {
