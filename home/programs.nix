@@ -64,6 +64,7 @@ in {
       spotify
       sqlitebrowser
       strace
+      swappy
       sysstat
       terraform
       tree
