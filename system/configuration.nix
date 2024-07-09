@@ -87,6 +87,7 @@
     libinput
     mako
     networkmanagerapplet
+    nh
     slurp
     upower
     v4l-utils
