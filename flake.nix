@@ -22,6 +22,12 @@
 
     minimal-tmux.url = "github:niksingh710/minimal-tmux-status";
     minimal-tmux.inputs.nixpkgs.follows = "nixpkgs";
+
+    nais-cli.url = "github:nais/cli";
+    nais-cli.inputs.nixpkgs.follows = "nixpkgs";
+
+    narc-cli.url = "github:nais/narcos";
+    narc-cli.inputs.nixpkgs.follows = "nixpkgs";
   };
 
   outputs = {
@@ -62,7 +68,11 @@
 
           {
             services.naisdevice.enable = true;
-            environment.systemPackages = [naisdevice.packages.${system}.naisdevice];
+            environment.systemPackages = [
+              naisdevice.packages.${system}.naisdevice
+              inputs.nais-cli.packages.${system}.nais
+              inputs.narc-cli.packages.${system}.narc
+            ];
           }
           naisdevice.nixosModules.naisdevice
         ];
