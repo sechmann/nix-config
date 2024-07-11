@@ -360,6 +360,26 @@
         "type": "github"
       }
     },
+    "nais-cli": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1720618284,
+        "narHash": "sha256-VwWm9ptnV+RWKnW106NSHnCRkYoaJUu+o4FYFb3z4Jw=",
+        "owner": "nais",
+        "repo": "cli",
+        "rev": "f3e827b8d8f78709b102acc9a82ee47d560013f1",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nais",
+        "repo": "cli",
+        "type": "github"
+      }
+    },
     "naisdevice": {
       "inputs": {
         "devshell": "devshell",
@@ -377,6 +397,26 @@
       "original": {
         "path": "/home/vegar/dev/nais/device/",
         "type": "path"
+      }
+    },
+    "narc-cli": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1720616899,
+        "narHash": "sha256-USFgkEanuBoG8kND0V7S7Ar0jFvjXsXBR6DMrwVxHs0=",
+        "owner": "nais",
+        "repo": "narcos",
+        "rev": "24cdb42a123388a2d71ddc43ce5107f7a3540780",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nais",
+        "repo": "narcos",
+        "type": "github"
       }
     },
     "nix-darwin": {
@@ -462,11 +502,11 @@
     },
     "nixpkgs_4": {
       "locked": {
-        "lastModified": 1719075281,
-        "narHash": "sha256-CyyxvOwFf12I91PBWz43iGT1kjsf5oi6ax7CrvaMyAo=",
+        "lastModified": 1720542800,
+        "narHash": "sha256-ZgnNHuKV6h2+fQ5LuqnUaqZey1Lqqt5dTUAiAnqH0QQ=",
         "owner": "NixOS",
         "repo": "nixpkgs",
-        "rev": "a71e967ef3694799d0c418c98332f7ff4cc5f6af",
+        "rev": "feb2849fdeb70028c70d73b848214b00d324a497",
         "type": "github"
       },
       "original": {
@@ -524,7 +564,9 @@
         "home-manager": "home-manager",
         "kolide-launcher": "kolide-launcher",
         "minimal-tmux": "minimal-tmux",
+        "nais-cli": "nais-cli",
         "naisdevice": "naisdevice",
+        "narc-cli": "narc-cli",
         "nixpkgs": "nixpkgs_4",
         "nixvim": "nixvim",
         "treefmt-nix": "treefmt-nix_3",
