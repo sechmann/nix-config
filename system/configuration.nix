@@ -87,6 +87,7 @@
     mako
     networkmanagerapplet
     nh
+    nix-index
     slurp
     upower
     v4l-utils
