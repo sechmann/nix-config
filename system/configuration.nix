@@ -16,7 +16,6 @@
     ./keymap.nix
     ./font.nix
     ./fido2ble-to-uhid.nix
-    ./steam.nix
     ./obs.nix
   ];
 
