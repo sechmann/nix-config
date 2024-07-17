@@ -10,6 +10,7 @@
         #nil-ls.enable = true;
         nixd.enable = true;
         elmls.enable = true;
+        gleam.enable = true;
         gopls = {
           enable = true;
           settings = {

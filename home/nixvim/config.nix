@@ -1,5 +1,14 @@
 {...}: {
-  colorschemes.gruvbox.enable = true;
+  colorschemes = {
+    rose-pine = {
+      enable = true;
+      settings = {
+        dim_inactive_windows = true;
+        dark_variant = "moon";
+      };
+    };
+    #gruvbox.enable = true;
+  };
   clipboard.register = "unnamedplus";
 
   globals = {
