@@ -385,18 +385,23 @@
         "devshell": "devshell",
         "flake-parts": "flake-parts",
         "flake-root": "flake-root",
-        "nixpkgs": "nixpkgs_2",
+        "nixpkgs": [
+          "nixpkgs"
+        ],
         "treefmt-nix": "treefmt-nix"
       },
       "locked": {
-        "lastModified": 0,
-        "narHash": "sha256-GRUd44UxEUJcc0CgHbm0+yqqXRxlpKk4mOPjCK2LAlU=",
-        "path": "/home/vegar/dev/nais/device/",
-        "type": "path"
+        "lastModified": 1721034907,
+        "narHash": "sha256-p2FIbst5j9qJufg2UKFWRi5P69s0+13nr0hwnp7Ylq8=",
+        "owner": "nais",
+        "repo": "device",
+        "rev": "ccd46421057fa32a6081b4c5cc59ddd83df1a028",
+        "type": "github"
       },
       "original": {
-        "path": "/home/vegar/dev/nais/device/",
-        "type": "path"
+        "owner": "nais",
+        "repo": "device",
+        "type": "github"
       }
     },
     "narc-cli": {
@@ -470,22 +475,6 @@
     },
     "nixpkgs_2": {
       "locked": {
-        "lastModified": 1717602782,
-        "narHash": "sha256-pL9jeus5QpX5R+9rsp3hhZ+uplVHscNJh8n8VpqscM0=",
-        "owner": "NixOS",
-        "repo": "nixpkgs",
-        "rev": "e8057b67ebf307f01bdcc8fba94d94f75039d1f6",
-        "type": "github"
-      },
-      "original": {
-        "owner": "NixOS",
-        "ref": "nixos-unstable",
-        "repo": "nixpkgs",
-        "type": "github"
-      }
-    },
-    "nixpkgs_3": {
-      "locked": {
         "lastModified": 1708475490,
         "narHash": "sha256-g1v0TsWBQPX97ziznfJdWhgMyMGtoBFs102xSYO4syU=",
         "owner": "nixos",
@@ -500,7 +489,7 @@
         "type": "github"
       }
     },
-    "nixpkgs_4": {
+    "nixpkgs_3": {
       "locked": {
         "lastModified": 1720542800,
         "narHash": "sha256-ZgnNHuKV6h2+fQ5LuqnUaqZey1Lqqt5dTUAiAnqH0QQ=",
@@ -516,7 +505,7 @@
         "type": "github"
       }
     },
-    "nixpkgs_5": {
+    "nixpkgs_4": {
       "locked": {
         "lastModified": 1708475490,
         "narHash": "sha256-g1v0TsWBQPX97ziznfJdWhgMyMGtoBFs102xSYO4syU=",
@@ -567,7 +556,7 @@
         "nais-cli": "nais-cli",
         "naisdevice": "naisdevice",
         "narc-cli": "narc-cli",
-        "nixpkgs": "nixpkgs_4",
+        "nixpkgs": "nixpkgs_3",
         "nixvim": "nixvim",
         "treefmt-nix": "treefmt-nix_3",
         "wezterm": "wezterm"
@@ -645,7 +634,7 @@
     },
     "treefmt-nix": {
       "inputs": {
-        "nixpkgs": "nixpkgs_3"
+        "nixpkgs": "nixpkgs_2"
       },
       "locked": {
         "lastModified": 1717278143,
@@ -684,7 +673,7 @@
     },
     "treefmt-nix_3": {
       "inputs": {
-        "nixpkgs": "nixpkgs_5"
+        "nixpkgs": "nixpkgs_4"
       },
       "locked": {
         "lastModified": 1718522839,

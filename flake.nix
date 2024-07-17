@@ -13,7 +13,9 @@
     nixvim.url = "github:nix-community/nixvim";
     nixvim.inputs.nixpkgs.follows = "nixpkgs";
 
-    naisdevice.url = "path:/home/vegar/dev/nais/device/";
+    #naisdevice.url = "path:/home/vegar/dev/nais/device/";
+    naisdevice.url = "github:nais/device";
+    naisdevice.inputs.nixpkgs.follows = "nixpkgs";
 
     wezterm.url = "github:wez/wezterm?dir=nix";
     wezterm.inputs.nixpkgs.follows = "nixpkgs";
@@ -41,12 +43,13 @@
   } @ inputs: let
     system = "x86_64-linux";
     treeFmtEval = treefmt-nix.lib.evalModule nixpkgs.legacyPackages.${system} ./treefmt.nix;
-  in {
+  in rec {
+    overlays = import ./overlays {inherit inputs;};
     nixosConfigurations = {
       vegar-nav = nixpkgs.lib.nixosSystem {
         inherit system;
         modules = [
-          {nixpkgs.overlays = [(import ./overlays/packages.nix inputs)];}
+          {nixpkgs.overlays = [overlays.additions overlays.modifications];}
           ./system/configuration.nix
           home-manager.nixosModules.home-manager
           {
