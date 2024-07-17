@@ -79,7 +79,7 @@
         };
       };
       bars = [];
-      terminal = "wezterm";
+      terminal = "foot";
       gaps = {
         outer = 10;
         inner = 5;
@@ -112,6 +112,7 @@
           # other
           (for_window_app_id "firefox" ".*" "border pixel 2")
           (for_window_app_id "org.wezfurlong.wezterm" ".*" "border pixel 2")
+          (for_window_app_id "foot" ".*" "border pixel 2")
         ];
       };
     };

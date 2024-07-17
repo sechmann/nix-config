@@ -1,8 +1,8 @@
 {inputs, ...}: {
   imports = [
-    inputs.nixvim.homeManagerModules.nixvim
     ./browser.nix
     ./dots.nix
+    ./foot.nix
     ./git.nix
     ./programs.nix
     ./ssh.nix
@@ -10,6 +10,7 @@
     ./tmux.nix
     ./waybar.nix
     ./zsh.nix
+    inputs.nixvim.homeManagerModules.nixvim
   ];
   # Home Manager needs a bit of information about you and the
   # paths it should manage.

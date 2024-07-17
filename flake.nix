@@ -13,10 +13,6 @@
     nixvim.url = "github:nix-community/nixvim";
     nixvim.inputs.nixpkgs.follows = "nixpkgs";
 
-    #naisdevice.url = "path:/home/vegar/dev/nais/device/";
-    naisdevice.url = "github:nais/device";
-    naisdevice.inputs.nixpkgs.follows = "nixpkgs";
-
     wezterm.url = "github:wez/wezterm?dir=nix";
     wezterm.inputs.nixpkgs.follows = "nixpkgs";
 
@@ -24,6 +20,10 @@
 
     minimal-tmux.url = "github:niksingh710/minimal-tmux-status";
     minimal-tmux.inputs.nixpkgs.follows = "nixpkgs";
+
+    #naisdevice.url = "path:/home/vegar/dev/nais/device/";
+    naisdevice.url = "github:nais/device";
+    naisdevice.inputs.nixpkgs.follows = "nixpkgs";
 
     nais-cli.url = "github:nais/cli";
     nais-cli.inputs.nixpkgs.follows = "nixpkgs";
