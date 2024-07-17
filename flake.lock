@@ -334,11 +334,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1718553171,
-        "narHash": "sha256-cwWoKsiDLSlSLis5tzqP2kFwTbl9PlzMYNdo2lDk0So=",
+        "lastModified": 1721133318,
+        "narHash": "sha256-lDPT3XRH14Z5WTdtWhgiYa8FjQHeYFCY7Dpy9xU8vyM=",
         "owner": "niksingh710",
         "repo": "minimal-tmux-status",
-        "rev": "131306e6924a8e71dfc6be20dd1a10441248c690",
+        "rev": "86de1697b6b0522ebd36b5fe83c5fd9b7e30f15f",
         "type": "github"
       },
       "original": {
@@ -378,11 +378,11 @@
         "treefmt-nix": "treefmt-nix"
       },
       "locked": {
-        "lastModified": 1721034907,
-        "narHash": "sha256-p2FIbst5j9qJufg2UKFWRi5P69s0+13nr0hwnp7Ylq8=",
+        "lastModified": 1721041118,
+        "narHash": "sha256-1K1UXcuAeJ5j54Iw7BSb/mmN9CL2bTNLg1zLaWBaaAc=",
         "owner": "nais",
         "repo": "device",
-        "rev": "ccd46421057fa32a6081b4c5cc59ddd83df1a028",
+        "rev": "f0c3a249a5d4ec7eca35a4285f0ae2e4b79cd6f9",
         "type": "github"
       },
       "original": {
