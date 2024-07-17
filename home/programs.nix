@@ -58,6 +58,9 @@ in {
       pavucontrol
       pciutils
       playerctl
+      powertop
+      quickemu
+      quickgui
       ripgrep
       signal-desktop
       slack
@@ -67,6 +70,7 @@ in {
       swappy
       sysstat
       terraform
+      thunderbird
       tree
       unzip
       usbutils
@@ -75,6 +79,7 @@ in {
       xz
       yq-go
       yt-dlp
+      zed-editor
       zip
       zoom-us
     ]);
