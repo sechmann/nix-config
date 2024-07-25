@@ -16,6 +16,7 @@ in {
       (google-cloud-sdk.withExtraComponents [google-cloud-sdk.components.gke-gcloud-auth-plugin])
       adriconf
       azure-cli
+      bitwarden-cli
       brightnessctl
       btop
       btop
