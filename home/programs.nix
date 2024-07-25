@@ -53,6 +53,7 @@ in {
       lynx
       mpv
       nix-output-monitor
+      oath-toolkit
       overmind
       p7zip
       pamixer
