@@ -29,6 +29,9 @@
 
   networking.hostName = "vegar-nav"; # Define your hostname.
   networking.networkmanager.enable = true; # Easiest to use and most distros use this by default.
+  networking.extraHosts = ''
+    127.0.0.1 host.docker.internal
+  '';
 
   # Set your time zone.
   time.timeZone = "Europe/Oslo";
