@@ -25,8 +25,6 @@
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
-  services.desktopManager.plasma6.enable = true;
-
   networking.hostName = "vegar-nav"; # Define your hostname.
   networking.networkmanager.enable = true; # Easiest to use and most distros use this by default.
   networking.extraHosts = ''
