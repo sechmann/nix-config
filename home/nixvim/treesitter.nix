@@ -1,13 +1,15 @@
 {...}: {
   plugins.treesitter = {
     enable = true;
-    indent = true;
-    incrementalSelection = {
-      enable = true;
-      keymaps = {
-        #initSelection = "<C-space>";
-        #nodeIncremental = "<C-space>";
-        #nodeDecremental = "<bs>";
+    settings = {
+      indent.enable = true;
+      incremental_selection = {
+        enable = true;
+        keymaps = {
+          #initSelection = "<C-space>";
+          #nodeIncremental = "<C-space>";
+          #nodeDecremental = "<bs>";
+        };
       };
     };
   };
