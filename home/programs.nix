@@ -81,7 +81,7 @@ in {
       xz
       yq-go
       yt-dlp
-      zed-editor
+      #zed-editor
       zip
       zoom-us
     ]);
@@ -114,8 +114,8 @@ in {
     };
 
     wezterm = {
-      enable = true;
-      package = inputs.wezterm.packages."${system}".default;
+      enable = false;
+      # package = inputs.wezterm.packages."${system}".default;
       extraConfig = ''
         return {
           enable_wayland = true,
