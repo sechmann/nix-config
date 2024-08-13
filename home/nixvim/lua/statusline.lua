@@ -213,6 +213,16 @@ local function file_type()
 	end)
 end
 
+local function lsp_status()
+	local lsp_status = require("lsp-status")
+	lsp_status.register_progress()
+
+	if table.getn(vim.lsp.buf_get_clients()) > 0 then
+		return string.format("[%s]", lsp_status.status())
+	end
+	return "[no status]"
+end
+
 ---@diagnostic disable-next-line: lowercase-global
 function status_line()
 	return table.concat({
@@ -227,6 +237,7 @@ function status_line()
 		word_count(), -- word count
 		"[%-3.(%l|%c]", -- line number, column number
 		human_file_size(), -- file size
+		lsp_status(),
 		file_type(), -- file type
 	})
 end
