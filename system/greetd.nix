@@ -3,6 +3,9 @@
   lib,
   ...
 }: let
+  riverRun = pkgs.writeShellScript "river-run" ''
+    ${pkgs.river}/bin/river |& tee river.log
+  '';
   swayRun = pkgs.writeShellScript "sway-run" ''
     export SDL_VIDEODRIVER=wayland
     export _JAVA_AWT_WM_NONREPARENTING=1
@@ -35,9 +38,16 @@ in {
     TTYVTDisallocate = true;
   };
 
-  environment.etc."greetd/environments.d/sway.desktop".text = ''
-    [Desktop Entry]
-    Name=Sway
-    Exec=${swayRun}
-  '';
+  environment.etc = {
+    "greetd/environments.d/river.desktop".text = ''
+      [Desktop Entry]
+      Name=River
+      Exec=${riverRun}
+    '';
+    "greetd/environments.d/sway.desktop".text = ''
+      [Desktop Entry]
+      Name=Sway
+      Exec=${swayRun}
+    '';
+  };
 }

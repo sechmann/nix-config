@@ -4,7 +4,10 @@
     ./dots.nix
     ./foot.nix
     ./git.nix
+    ./kanshi.nix
+    ./lock.nix
     ./programs.nix
+    ./river.nix
     ./ssh.nix
     ./sway.nix
     ./tmux.nix

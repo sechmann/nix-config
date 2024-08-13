@@ -3,39 +3,6 @@
   lib,
   ...
 }: {
-  home.packages = [pkgs.kanshi];
-  services.kanshi = {
-    enable = true;
-    systemdTarget = "sway-session.target";
-    settings = [
-      {
-        profile.name = "undocked";
-        profile.outputs = [
-          {
-            criteria = "eDP-1";
-            mode = "1920x1200@60.026Hz";
-            status = "enable";
-          }
-        ];
-      }
-      {
-        profile.name = "docked";
-        profile.outputs = [
-          {
-            criteria = "LG Electronics LG TV SSCR2 0x01010101";
-            mode = "3840x2160@120.000Hz";
-            position = "0,0";
-            status = "enable";
-          }
-          {
-            criteria = "eDP-1";
-            status = "disable";
-          }
-        ];
-      }
-    ];
-  };
-
   wayland.windowManager.sway = let
     modifier = "Mod4";
     fixExternalMonitor = pkgs.writeShellScript "external-monitor.sh" ''
@@ -116,76 +83,6 @@
           (for_window_app_id "foot" ".*" "border pixel 2")
         ];
       };
-    };
-  };
-  services.swayidle = {
-    enable = true;
-    systemdTarget = "sway-session.target";
-    events = [
-      {
-        event = "before-sleep";
-        command = "${pkgs.playerctl}/bin/playerctl pause; if ! pgrep -x swaylock; then ${pkgs.swaylock}/bin/swaylock -f; fi";
-      }
-      {
-        event = "lock";
-        command = "${pkgs.playerctl}/bin/playerctl pause; if ! pgrep -x swaylock; then ${pkgs.swaylock}/bin/swaylock -f; fi";
-      }
-      {
-        event = "after-resume";
-        command = "${pkgs.sway}/bin/swaymsg 'output * dpms on'";
-      }
-    ];
-    timeouts = [
-      {
-        timeout = 300;
-        command = "${pkgs.playerctl}/bin/playerctl pause; if ! pgrep -x swaylock; then ${pkgs.swaylock}/bin/swaylock -f; fi";
-      }
-      {
-        timeout = 320;
-        command = "${pkgs.systemd}/bin/systemctl suspend";
-      }
-      {
-        timeout = 600;
-        command = "${pkgs.sway}/bin/swaymsg 'output * dpms off'";
-      }
-    ];
-  };
-  programs.swaylock = {
-    enable = true;
-    settings = {
-      font-size = 24;
-      indicator-idle-visible = false;
-      indicator-radius = 200;
-      show-failed-attempts = true;
-      color = "1e1e2e";
-      bs-hl-color = "f5e0dc";
-      caps-lock-bs-hl-color = "f5e0dc";
-      caps-lock-key-hl-color = "a6e3a1";
-      inside-color = "00000000";
-      inside-clear-color = "00000000";
-      inside-caps-lock-color = "00000000";
-      inside-ver-color = "00000000";
-      inside-wrong-color = "00000000";
-      key-hl-color = "a6e3a1";
-      layout-bg-color = "00000000";
-      layout-border-color = "00000000";
-      layout-text-color = "cdd6f4";
-      line-color = "00000000";
-      line-clear-color = "00000000";
-      line-caps-lock-color = "00000000";
-      line-ver-color = "00000000";
-      line-wrong-color = "00000000";
-      ring-color = "b4befe";
-      ring-clear-color = "f5e0dc";
-      ring-caps-lock-color = "fab387";
-      ring-ver-color = "89b4fa";
-      ring-wrong-color = "eba0ac";
-      separator-color = "00000000";
-      text-color = "cdd6f4";
-      text-clear-color = "f5e0dc";
-      text-caps-lock-color = "fab387";
-      text-ver-color = "89b4fa";
-      text-wrong-color = "eba0ac";
     };
   };
 }
