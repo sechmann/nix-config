@@ -8,6 +8,7 @@
       enable = true;
       servers = {
         #nil-ls.enable = true;
+        kotlin-language-server.enable = true;
         nixd.enable = true;
         elmls.enable = true;
         gleam.enable = true;
