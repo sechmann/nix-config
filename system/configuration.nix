@@ -79,25 +79,7 @@
   virtualisation.docker.enable = true;
   # List packages installed in system profile. To search, run:
   # $ nix search wget
-  environment.systemPackages = with pkgs; [
-    curl
-    docker
-    docker-compose
-    grim
-    hn-text
-    libinput
-    mako
-    networkmanagerapplet
-    nh
-    nix-index
-    slurp
-    upower
-    v4l-utils
-    vim
-    wget
-    wireguard-tools
-    wl-clipboard
-  ];
+  environment.systemPackages = with pkgs; [];
 
   programs.light.enable = true;
   xdg.portal.wlr.enable = true;

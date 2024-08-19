@@ -12,13 +12,15 @@ in {
   home.packages =
     [nvim]
     ++ (with pkgs; [
+      #zed-editor
       (google-cloud-sdk.withExtraComponents [google-cloud-sdk.components.gke-gcloud-auth-plugin])
-      adriconf
       azure-cli
       bitwarden-cli
       brightnessctl
       btop
-      btop
+      curl
+      docker
+      docker-compose
       droidcam
       ethtool
       eza
@@ -26,63 +28,58 @@ in {
       feh
       file
       firefox
-      flameshot
       fzf
       gawk
       gnupg
       gnused
       gnutar
-      google-chrome
+      grim
       iftop
       imagemagick
       iotop
       jq
       kanshi
       kickoff
-      kitty
       kubectl
       kubelogin
       kubeswitch
-      ladybird
-      ldns
+      libinput
       libreoffice-fresh
-      lix
       lm_sensors
       lsof
-      ltrace
-      lynx
       mpv
+      networkmanagerapplet
+      nh
       nix-output-monitor
       oath-toolkit
-      overmind
       p7zip
       pamixer
       pavucontrol
       pciutils
       playerctl
       powertop
-      quickemu
-      quickgui
       ripgrep
       signal-desktop
       slack
+      slurp
       spotify
-      sqlitebrowser
       stern
       strace
-      swappy
       sysstat
       terraform
       thunderbird
       tree
       unzip
+      upower
       usbutils
-      weechat
+      v4l-utils
+      wget
       which
+      wireguard-tools
+      wl-clipboard
       xz
       yq-go
       yt-dlp
-      zed-editor
       zip
       zoom-us
     ]);
