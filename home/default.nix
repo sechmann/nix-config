@@ -1,6 +1,7 @@
 {inputs, ...}: {
   imports = [
     ./browser.nix
+    ./humanlog.nix
     ./dots.nix
     ./foot.nix
     ./git.nix
