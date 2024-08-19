@@ -69,6 +69,7 @@ in {
       slack
       spotify
       sqlitebrowser
+      stern
       strace
       swappy
       sysstat
