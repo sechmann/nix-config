@@ -12,7 +12,6 @@ in {
   home.packages =
     [nvim]
     ++ (with pkgs; [
-      #zed-editor
       (google-cloud-sdk.withExtraComponents [google-cloud-sdk.components.gke-gcloud-auth-plugin])
       adriconf
       azure-cli
@@ -83,6 +82,7 @@ in {
       xz
       yq-go
       yt-dlp
+      zed-editor
       zip
       zoom-us
     ]);
