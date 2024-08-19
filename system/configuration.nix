@@ -67,7 +67,8 @@
       "wheel"
       "video"
       "networkmanager"
-    ]; # Enable ‘sudo’ for the user.
+      "docker"
+    ];
     shell = pkgs.zsh;
   };
 
