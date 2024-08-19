@@ -7,20 +7,20 @@
         "skip": [],
         "keep": [],
         "time-fields": [
-        	"time",
-        	"ts",
-        	"@timestamp",
-        	"timestamp"
+          "time",
+          "ts",
+          "@timestamp",
+          "timestamp"
         ],
         "message-fields": [
-        	"message",
-        	"msg"
+          "message",
+          "msg"
         ],
         "level-fields": [
-        	"level",
-        	"lvl",
-        	"loglevel",
-        	"severity"
+          "level",
+          "lvl",
+          "loglevel",
+          "severity"
         ],
         "sort-longest": true,
         "skip-unchanged": false,
@@ -30,7 +30,8 @@
         "truncate-length": 15,
         "time-format": "Jan _2 15:04:05",
         "palette": null,
-        "interrupt": false
+        "interrupt": false,
+        "skip_check_updates": true
       }
     '';
   };
