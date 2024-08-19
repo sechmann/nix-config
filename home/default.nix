@@ -8,7 +8,7 @@
     ./kanshi.nix
     ./lock.nix
     ./programs.nix
-    ./river.nix
+    #./river.nix
     ./ssh.nix
     ./sway.nix
     ./tmux.nix
