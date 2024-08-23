@@ -14,6 +14,7 @@ in {
     ++ (with pkgs; [
       #zed-editor
       (google-cloud-sdk.withExtraComponents [google-cloud-sdk.components.gke-gcloud-auth-plugin])
+      google-cloud-sql-proxy
       azure-cli
       bitwarden-cli
       brightnessctl
