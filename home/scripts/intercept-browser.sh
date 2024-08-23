@@ -37,6 +37,8 @@ elif [[ $url =~ (fasit|monitoring).nais.io ]]; then
 elif [[ $url =~ https://(www.)?youtube.com ]] || [[ $url =~ https://(www.)?youtu.be ]]; then
 	mpv "$url"
 	exit 0
+elif [[ $url =~ https?://[^.]*.?medium.com ]]; then
+	url="${url//medium.com/scribe.rip}"
 fi
 
 firefox "$url"
