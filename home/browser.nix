@@ -7,6 +7,7 @@
     "x-scheme-handler/https" = [default-browser];
     "x-scheme-handler/about" = [default-browser];
     "x-scheme-handler/unknown" = [default-browser];
+    "application/xhtml+xml" = [default-browser];
   };
 in {
   xdg = {
