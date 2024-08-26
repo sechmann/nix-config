@@ -11,132 +11,7 @@
       pulseSupport = false;
       sndioSupport = false;
     };
-    style = ''
-      /* gruvbox */
-      @define-color background #1d2021;
-      @define-color foreground #d4be98;
-
-      @define-color blue #7daea3;
-      @define-color mauve #d3869b;
-      @define-color maroon #d65d0e;
-      @define-color yellow #d8a657;
-      @define-color lavender #89b482;
-
-      * {
-          font-family: "Iosevka Nerd Font";
-          font-size: 16px;
-          min-height: 0;
-          font-weight: bold;
-      }
-
-      window#waybar {
-          background: transparent;
-          background-color: @background;
-          color: @foreground;
-          transition-property: background-color;
-          transition-duration: 0.1s;
-      }
-
-      #window {
-          margin: 2;
-          padding-left: 8;
-          padding-right: 8;
-      }
-
-      button {
-          box-shadow: inset 0 -3px transparent;
-          border: none;
-          border-radius: 0;
-      }
-
-      button:hover {
-          background: inherit;
-          border-top: 2px solid @hover;
-      }
-
-      #workspaces button {
-          padding: 0 4px;
-      }
-
-      #workspaces button.focused {
-          background-color: rgba(0, 0, 0, 0.3);
-          color: @blue;
-          border-top: 2px solid @blue;
-      }
-
-      #workspaces button.urgent {
-          background-color: #eb4d4b;
-      }
-
-      #pulseaudio,
-      #clock,
-      #battery,
-      #cpu,
-      #memory,
-      #disk,
-      #temperature,
-      #backlight,
-      #wireplumber,
-      #tray,
-      #mode,
-      #scratchpad {
-          margin: 2px;
-          padding-left: 4px;
-          padding-right: 4px;
-      }
-
-      #clock {
-          color: @maroon;
-          border-bottom: 2px solid @maroon;
-      }
-
-      #clock.date {
-          color: @mauve;
-          border-bottom: 2px solid @mauve;
-      }
-
-      #pulseaudio {
-          color: @blue;
-          border-bottom: 2px solid @blue;
-      }
-
-      #network {
-          color: @yellow;
-          border-bottom: 2px solid @yellow;
-      }
-
-      #idle_inhibitor {
-          margin-right: 12px;
-          color: #7cb342;
-      }
-
-      #idle_inhibitor.activated {
-          color: @red;
-      }
-
-      #battery.charging,
-      #battery.plugged {
-          color: @green;
-          border-bottom: 2px solid @green;
-      }
-
-      /* If workspaces is the leftmost module, omit left margin */
-      .modules-left>widget:first-child>#workspaces {
-          margin-left: 0;
-      }
-
-      /* If workspaces is the rightmost module, omit right margin */
-      .modules-right>widget:last-child>#workspaces {
-          margin-right: 0;
-      }
-
-      #custom-vpn {
-          color: @lavender;
-          border-radius: 15px;
-          padding-left: 6px;
-          padding-right: 6px;
-      }
-    '';
+    style = builtins.readFile ./style.css;
     settings = {
       mainBar = {
         layer = "top";
@@ -157,6 +32,7 @@
           "bluetooth"
           "clock"
           "clock#date"
+          "custom/notification"
         ];
 
         "sway/mode" = {
@@ -248,6 +124,26 @@
           "interval" = 600;
           "exec" = "curl -s 'https://wttr.in/Oslo,Norway?format=1'";
           "exec-if" = "ping wttr.in -c1";
+        };
+        "custom/notification" = {
+          "tooltip" = false;
+          "format" = "{icon}";
+          "format-icons" = {
+            "notification" = "<span foreground='red'><sup></sup></span>";
+            "none" = "";
+            "dnd-notification" = "<span foreground='red'><sup></sup></span>";
+            "dnd-none" = "";
+            "inhibited-notification" = "<span foreground='red'><sup></sup></span>";
+            "inhibited-none" = "";
+            "dnd-inhibited-notification" = "<span foreground='red'><sup></sup></span>";
+            "dnd-inhibited-none" = "";
+          };
+          "return-type" = "json";
+          "exec-if" = "which swaync-client";
+          "exec" = "swaync-client -swb";
+          "on-click" = "swaync-client -t -sw";
+          "on-click-right" = "swaync-client -d -sw";
+          "escape" = true;
         };
         # "custom/vpn" = {
         #   "tooltip" = false;

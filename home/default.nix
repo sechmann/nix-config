@@ -9,14 +9,14 @@
     ./kanshi.nix
     ./lock.nix
     ./modules
-    ./notifications.nix
     ./programs.nix
     ./ssh.nix
     ./sway.nix
+    ./swaync
     ./tmux.nix
-    ./waybar.nix
-    ./zsh.nix
+    ./waybar
     ./zed-editor.nix
+    ./zsh.nix
     inputs.nixvim.homeManagerModules.nixvim
   ];
   custom.programs.zen-browser.enable = true;
