@@ -14,7 +14,6 @@ in {
     ++ (with pkgs; [
       #zed-editor
       (google-cloud-sdk.withExtraComponents [google-cloud-sdk.components.gke-gcloud-auth-plugin])
-      google-cloud-sql-proxy
       azure-cli
       bitwarden-cli
       brightnessctl
@@ -34,6 +33,7 @@ in {
       gnupg
       gnused
       gnutar
+      google-cloud-sql-proxy
       grim
       iftop
       imagemagick
@@ -86,6 +86,7 @@ in {
     ]);
 
   services.mako = {
+    enable = false;
     backgroundColor = "#285577BB";
     defaultTimeout = 5000;
   };

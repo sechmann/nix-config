@@ -1,14 +1,15 @@
 {inputs, ...}: {
   imports = [
+    #./river.nix
     ./browser.nix
-    ./humanlog.nix
     ./dots.nix
     ./foot.nix
     ./git.nix
+    ./humanlog.nix
     ./kanshi.nix
     ./lock.nix
+    ./notifications.nix
     ./programs.nix
-    #./river.nix
     ./ssh.nix
     ./sway.nix
     ./tmux.nix
