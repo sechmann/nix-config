@@ -16,6 +16,7 @@
     ./tmux.nix
     ./waybar.nix
     ./zsh.nix
+    ./zed-editor.nix
     inputs.nixvim.homeManagerModules.nixvim
   ];
   custom.programs.zen-browser.enable = true;
