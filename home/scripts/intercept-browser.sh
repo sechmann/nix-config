@@ -41,4 +41,4 @@ elif [[ $url =~ https?://[^.]*.?medium.com ]]; then
 	url="${url//medium.com/scribe.rip}"
 fi
 
-firefox "$url"
+zen "$url"
