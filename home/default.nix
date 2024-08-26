@@ -8,6 +8,7 @@
     ./humanlog.nix
     ./kanshi.nix
     ./lock.nix
+    ./modules
     ./notifications.nix
     ./programs.nix
     ./ssh.nix
@@ -17,6 +18,7 @@
     ./zsh.nix
     inputs.nixvim.homeManagerModules.nixvim
   ];
+  custom.programs.zen-browser.enable = true;
   # Home Manager needs a bit of information about you and the
   # paths it should manage.
   home.username = "vegar";

@@ -111,7 +111,6 @@ in
         libglvnd
       ]}"
       )
-      gappsWrapperArgs+=(--set MOZ_LEGACY_PROFILES 1)
       wrapGApp $out/lib/zen/zen
     '';
 
