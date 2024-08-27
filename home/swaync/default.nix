@@ -1,4 +1,9 @@
-{pkgs, ...}: let
+{
+  pkgs,
+  config,
+  lib,
+  ...
+}: let
   cfg = {
     "$schema" = "${pkgs.swaynotificationcenter}/etc/xdg/swaync/configSchema.json";
     positionX = "right";
@@ -47,5 +52,20 @@ in {
     enable = true;
     style = ./style.css;
     settings = cfg;
+  };
+
+  systemd.user.services.swaync = {
+    Unit = {
+      Description = "Swaync notification daemon";
+      Documentation = "https://github.com/ErikReider/SwayNotificationCenter";
+      PartOf = ["graphical-session.target"];
+      After = ["graphical-session-pre.target"];
+      ConditionEnvironment = "WAYLAND_DISPLAY";
+
+      X-Restart-Triggers = [
+        "${config.xdg.configFile."swaync/config.json".source}"
+        "${config.xdg.configFile."swaync/style.css".source}"
+      ];
+    };
   };
 }

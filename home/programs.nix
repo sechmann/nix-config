@@ -35,6 +35,7 @@ in {
       gnutar
       google-cloud-sql-proxy
       grim
+      kubernetes-helm
       iftop
       imagemagick
       iotop
