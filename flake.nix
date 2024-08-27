@@ -29,6 +29,9 @@
 
     narc-cli.url = "github:nais/narcos";
     narc-cli.inputs.nixpkgs.follows = "nixpkgs";
+
+    zen-browser.url = "github:MarceColl/zen-browser-flake";
+    zen-browser.inputs.nixpkgs.follows = "nixpkgs";
   };
 
   outputs = {

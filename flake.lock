@@ -514,7 +514,8 @@
         "nixpkgs": "nixpkgs_3",
         "nixpkgs-zoom": "nixpkgs-zoom",
         "nixvim": "nixvim",
-        "treefmt-nix": "treefmt-nix_3"
+        "treefmt-nix": "treefmt-nix_3",
+        "zen-browser": "zen-browser"
       }
     },
     "systems": {
@@ -601,6 +602,26 @@
       "original": {
         "owner": "numtide",
         "repo": "treefmt-nix",
+        "type": "github"
+      }
+    },
+    "zen-browser": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1724745035,
+        "narHash": "sha256-WhTJaCw0XDR9gAQ6uEIMkT7bKsHXBafj1GJnRsWXHpk=",
+        "owner": "MarceColl",
+        "repo": "zen-browser-flake",
+        "rev": "723039271547eb4c648e5bd774e2f7bc73564b16",
+        "type": "github"
+      },
+      "original": {
+        "owner": "MarceColl",
+        "repo": "zen-browser-flake",
         "type": "github"
       }
     }

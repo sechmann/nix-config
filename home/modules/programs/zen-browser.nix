@@ -1,7 +1,8 @@
 {
   config,
   lib,
-  pkgs,
+  inputs,
+  system,
   ...
 }: let
   cfg = config.custom.programs.zen-browser;
@@ -11,7 +12,8 @@ in {
   };
 
   config = lib.mkIf cfg.enable {
-    home.packages = [pkgs.zen-browser-bin];
+    #home.packages = [pkgs.zen-browser-bin];
+    home.packages = [inputs.zen-browser.packages."${system}".specific];
 
     #home.file.".zen/profiles.ini".text = lib.generators.toINI {} {
     #  General = {
