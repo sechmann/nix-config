@@ -126,6 +126,7 @@
           "exec-if" = "ping wttr.in -c1";
         };
         "custom/notification" = {
+          "max-length" = 4;
           "tooltip" = false;
           "format" = "{icon}";
           "format-icons" = {
@@ -139,10 +140,10 @@
             "dnd-inhibited-none" = "";
           };
           "return-type" = "json";
-          "exec-if" = "which swaync-client";
-          "exec" = "swaync-client -swb";
-          "on-click" = "swaync-client -t -sw";
-          "on-click-right" = "swaync-client -d -sw";
+          "exec-if" = "ls ${pkgs.swaynotificationcenter}/bin/swaync-client";
+          "exec" = "${pkgs.swaynotificationcenter}/bin/swaync-client -swb";
+          "on-click" = "${pkgs.swaynotificationcenter}/bin/swaync-client -t -sw";
+          "on-click-right" = "${pkgs.swaynotificationcenter}/bin/swaync-client -d -sw";
           "escape" = true;
         };
         # "custom/vpn" = {
