@@ -16,11 +16,12 @@
     nixvim.inputs.nixpkgs.follows = "nixpkgs";
 
     treefmt-nix.url = "github:numtide/treefmt-nix";
+    treefmt-nix.inputs.nixpkgs.follows = "nixpkgs";
 
     minimal-tmux.url = "github:niksingh710/minimal-tmux-status";
     minimal-tmux.inputs.nixpkgs.follows = "nixpkgs";
 
-    #naisdevice.url = "path:/home/vegar/dev/nais/device/";
+    # naisdevice.url = "path:/home/vegar/dev/nais/device/";
     naisdevice.url = "github:nais/device";
     naisdevice.inputs.nixpkgs.follows = "nixpkgs";
 

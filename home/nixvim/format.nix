@@ -2,47 +2,49 @@
   # for a list of formatters: `:help conform-formatters`
   plugins.conform-nvim = {
     enable = true;
-    formattersByFt = {
-      css = [
-        "prettierd"
-        "prettier"
-      ];
-      html = [
-        "prettierd"
-        "prettier"
-      ];
-      javascript = [
-        "prettierd"
-        "prettier"
-      ];
-      json = ["prettier"];
-      lua = ["stylua"];
-      markdown = ["prettier"];
-      nix = ["alejandra"];
-      python = [
-        "isort"
-        "black"
-      ];
-      rust = ["rustfmt"];
-      sh = ["shfmt"];
-      typescript = [
-        "prettierd"
-        "prettier"
-      ];
-      yaml = [
-        "prettierd"
-        "prettier"
-      ];
-    };
-    formatters = {
-      asmfmt = {
-        command = "asmfmt";
-        stdin = true;
+    settings = {
+      format_on_save = {
+        lspFallback = true;
+        timeoutMs = 2000;
       };
-    };
-    formatOnSave = {
-      lspFallback = true;
-      timeoutMs = 2000;
+      formatters_by_ft = {
+        css = [
+          "prettierd"
+          "prettier"
+        ];
+        html = [
+          "prettierd"
+          "prettier"
+        ];
+        javascript = [
+          "prettierd"
+          "prettier"
+        ];
+        json = ["prettier"];
+        lua = ["stylua"];
+        markdown = ["prettier"];
+        nix = ["alejandra"];
+        python = [
+          "isort"
+          "black"
+        ];
+        rust = ["rustfmt"];
+        sh = ["shfmt"];
+        typescript = [
+          "prettierd"
+          "prettier"
+        ];
+        yaml = [
+          "prettierd"
+          "prettier"
+        ];
+      };
+      formatters = {
+        asmfmt = {
+          command = "asmfmt";
+          stdin = true;
+        };
+      };
     };
   };
 
