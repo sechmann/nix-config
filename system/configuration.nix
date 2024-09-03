@@ -6,13 +6,14 @@
     '';
   };
   imports = [
-    ./hardware-configuration.nix
-    ./nvidia.nix
-    ./greetd.nix
-    ./keymap.nix
-    ./font.nix
     ./fido2ble-to-uhid.nix
+    ./font.nix
+    ./greetd.nix
+    ./hardware-configuration.nix
+    ./keymap.nix
+    ./nvidia.nix
     ./obs.nix
+    ./webcam.nix
   ];
 
   hardware.enableRedistributableFirmware = true;
