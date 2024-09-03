@@ -35,7 +35,6 @@ in {
       gnutar
       google-cloud-sql-proxy
       grim
-      kubernetes-helm
       iftop
       imagemagick
       iotop
@@ -44,6 +43,7 @@ in {
       kickoff
       kubectl
       kubelogin
+      kubernetes-helm
       kubeswitch
       libinput
       libreoffice-fresh
@@ -60,6 +60,7 @@ in {
       pciutils
       playerctl
       powertop
+      pwvucontrol
       ripgrep
       signal-desktop
       slack
