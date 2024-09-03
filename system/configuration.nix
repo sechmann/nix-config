@@ -1,8 +1,4 @@
-{
-  pkgs,
-  config,
-  ...
-}: {
+{pkgs, ...}: {
   nix = {
     package = pkgs.nixFlakes;
     extraOptions = ''
@@ -79,8 +75,6 @@
   virtualisation.docker.enable = true;
   # List packages installed in system profile. To search, run:
   # $ nix search wget
-  environment.systemPackages = with pkgs; [];
-
   programs.light.enable = true;
   xdg.portal.wlr.enable = true;
   xdg.portal.config = {
