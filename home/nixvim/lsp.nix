@@ -7,6 +7,11 @@
     lsp = {
       enable = true;
       servers = {
+        rust-analyzer = {
+          enable = true;
+          installCargo = false;
+          installRustc = false;
+        };
         #nil-ls.enable = true;
         kotlin-language-server.enable = true;
         nixd.enable = true;

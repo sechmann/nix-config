@@ -16,6 +16,7 @@
           "prettierd"
           "prettier"
         ];
+        elm = ["elm_format"];
         javascript = [
           "prettierd"
           "prettier"
