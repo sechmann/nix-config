@@ -77,6 +77,7 @@
           (for_window_class "zoom" "Settings" "floating enable, floating_minimum_size 960 x 700")
           # Open Zoom Meeting windows on a new workspace (a bit hacky)
           (for_window_class "zoom" "Zoom Meeting(.*)?" "workspace next_on_output --create, move container to workspace current, floating disable, inhibit_idle visible")
+          (for_window_class "zoom" "\.zoom" "workspace 11 --create, move container to workspace 11, floating enable")
           # other
           (for_window_app_id "firefox" ".*" "border pixel 2")
           (for_window_app_id "org.wezfurlong.wezterm" ".*" "border pixel 2")
