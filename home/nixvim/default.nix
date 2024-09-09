@@ -11,6 +11,7 @@
     ./neo-tree.nix
     ./plugins.nix
     ./refactoring.nix
+    ./terraform.nix
     ./telescope.nix
     ./treesitter.nix
   ];

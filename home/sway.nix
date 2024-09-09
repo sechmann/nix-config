@@ -26,7 +26,7 @@
         "--locked ${modifier}+Shift+r" = "exec ${fixExternalMonitor}";
         "XF86AudioNext" = "exec ${pkgs.playerctl}/bin/playerctl -p spotify next";
         "XF86AudioPrev" = "exec ${pkgs.playerctl}/bin/playerctl -p spotify previous";
-        "XF86AudioPlay" = "exec ${pkgs.playerctl}/bin/playerctl -p spotify play-pause";
+        "${modifier}+Shift+s" = "exec grim -g \"$(slurp)\" - | wl-copy";
       };
       keycodebindings = {
         #"171" = "exec ${pkgs.playerctl}/bin/playerctl -p spotify next";
