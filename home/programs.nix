@@ -80,6 +80,7 @@ in {
       which
       wireguard-tools
       wl-clipboard
+      xxd
       xz
       yq-go
       yt-dlp
