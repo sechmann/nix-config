@@ -17,6 +17,7 @@
           "prettier"
         ];
         elm = ["elm_format"];
+        terraform = ["terraform_fmt"];
         javascript = [
           "prettierd"
           "prettier"
