@@ -1,6 +1,7 @@
 {
   fetchFromGitHub,
   python3Packages,
+  ...
 }: let
   rev = "v0.1";
 in

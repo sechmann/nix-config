@@ -18,6 +18,7 @@
   darwin,
   alsa-lib,
   wayland,
+  ...
 }:
 rustPlatform.buildRustPackage rec {
   pname = "zed";

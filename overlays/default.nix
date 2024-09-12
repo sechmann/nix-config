@@ -1,7 +1,11 @@
 {inputs, ...}: let
   zoom-pipewire = inputs.nixpkgs-zoom.legacyPackages."x86_64-linux".pipewire;
 in {
-  additions = final: _prev: import ../pkgs {pkgs = final;};
+  additions = final: _prev:
+    import ../pkgs {
+      pkgs = final;
+      pyproject-nix = inputs.pyproject-nix;
+    };
   modifications = final: prev: {
     zoom-us =
       (prev.zoom-us.override {

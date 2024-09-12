@@ -15,6 +15,7 @@
   libva,
   pipewire,
   libglvnd,
+  ...
 }: let
   desktopItem = makeDesktopItem {
     name = "zen-browser";

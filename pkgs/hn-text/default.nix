@@ -1,6 +1,7 @@
 {
   fetchFromGitHub,
   buildGoModule,
+  ...
 }:
 buildGoModule {
   pname = "hn-text";

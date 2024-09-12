@@ -33,6 +33,9 @@
 
     zen-browser.url = "github:MarceColl/zen-browser-flake";
     zen-browser.inputs.nixpkgs.follows = "nixpkgs";
+
+    pyproject-nix.url = "github:nix-community/pyproject.nix";
+    pyproject-nix.inputs.nixpkgs.follows = "nixpkgs";
   };
 
   outputs = {
@@ -47,7 +50,9 @@
     system = "x86_64-linux";
     treeFmtEval = treefmt-nix.lib.evalModule nixpkgs.legacyPackages.${system} ./treefmt.nix;
   in rec {
-    overlays = import ./overlays {inherit inputs;};
+    overlays = import ./overlays {
+      inherit inputs;
+    };
     nixosConfigurations = {
       vegar-nav = nixpkgs.lib.nixosSystem {
         inherit system;

@@ -1,6 +1,7 @@
 {
   fetchFromGitHub,
   buildGoModule,
+  ...
 }:
 buildGoModule rec {
   pname = "humanlog";
