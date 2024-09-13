@@ -87,6 +87,7 @@ in {
       yt-dlp
       zip
       zoom-us
+      postgresql_16
     ]);
 
   services.mako = {
