@@ -37,7 +37,6 @@
       bind-key -r C-j resize-pane -D
       bind-key -r C-k resize-pane -U
       bind-key -r C-l resize-pane -R
-
     '';
     baseIndex = 1;
     clock24 = true;

@@ -60,6 +60,7 @@ in {
       pavucontrol
       pciutils
       playerctl
+      postgresql_16
       powertop
       pwvucontrol
       ripgrep
@@ -77,6 +78,7 @@ in {
       upower
       usbutils
       v4l-utils
+      velero
       wget
       which
       wireguard-tools
@@ -87,7 +89,6 @@ in {
       yt-dlp
       zip
       zoom-us
-      postgresql_16
     ]);
 
   services.mako = {
