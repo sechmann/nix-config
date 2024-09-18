@@ -336,11 +336,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1726567402,
-        "narHash": "sha256-H5HCdKyltQPAzWnjgD7PrxnnqEOfeQ1L2m1q6F0EPn8=",
+        "lastModified": 1726581768,
+        "narHash": "sha256-8KjojeXv87hbV9C6jShMuReP7bs9Oh5ZRfKAfYogycU=",
         "owner": "nais",
         "repo": "cli",
-        "rev": "3bd10e9af6a5ed3cc9af6c632b19b013e4456e4c",
+        "rev": "53416566e8693195dbd90f89787a5cdd81e236b6",
         "type": "github"
       },
       "original": {
