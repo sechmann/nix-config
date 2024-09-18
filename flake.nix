@@ -81,8 +81,8 @@
             services.naisdevice.enable = true;
             environment.systemPackages = [
               naisdevice.packages.${system}.naisdevice
-              inputs.nais-cli.packages.${system}.nais
-              inputs.narc-cli.packages.${system}.narc
+              inputs.nais-cli.packages.${system}.default
+              inputs.narc-cli.packages.${system}.default
             ];
           }
           naisdevice.nixosModules.naisdevice
