@@ -26,6 +26,7 @@
   networking.networkmanager.enable = true; # Easiest to use and most distros use this by default.
   networking.extraHosts = ''
     127.0.0.1 host.docker.internal
+    127.0.0.1 fasit-backend.nais-system
   '';
 
   # Set your time zone.
