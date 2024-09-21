@@ -29,10 +29,6 @@
             name = "path";
             groupIndex = 2;
           }
-          {
-            name = "buffer";
-            groupIndex = 2;
-          }
         ];
       };
     };
