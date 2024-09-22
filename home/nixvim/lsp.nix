@@ -7,6 +7,16 @@
     lsp = {
       enable = true;
       servers = {
+        yamlls = {
+          enable = true;
+          settings = {
+            yaml = {
+              schemas = {
+                "https://json.schemastore.org/github-workflow.json" = "/.github/workflows/*";
+              };
+            };
+          };
+        };
         rust-analyzer = {
           enable = true;
           installCargo = false;
