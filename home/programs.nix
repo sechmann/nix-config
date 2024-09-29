@@ -24,6 +24,7 @@ in {
       docker-compose
       droidcam
       ethtool
+      evince
       eza
       fd
       feh
@@ -34,6 +35,7 @@ in {
       gnupg
       gnused
       gnutar
+      google-chrome
       google-cloud-sql-proxy
       grim
       iftop
