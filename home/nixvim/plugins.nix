@@ -22,6 +22,7 @@ in {
     which-key.enable = true;
     lsp-status.enable = true;
     neotest.enable = true;
+    web-devicons.enable = true;
   };
   extraPackages = with pkgs; [
     # Formatters
