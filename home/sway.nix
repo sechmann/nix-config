@@ -80,6 +80,7 @@
           (for_window_class "zoom" "\.zoom" "workspace 11 --create, move container to workspace 11, floating enable")
           # other
           (for_window_app_id "firefox" ".*" "border pixel 2")
+          (for_window_app_id "zen-alpha" ".*" "border pixel 2")
           (for_window_app_id "org.wezfurlong.wezterm" ".*" "border pixel 2")
           (for_window_app_id "foot" ".*" "border pixel 2")
         ];
