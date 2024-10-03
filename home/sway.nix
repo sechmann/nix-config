@@ -21,6 +21,7 @@
     config = {
       modifier = "${modifier}";
       keybindings = lib.mkOptionDefault {
+        "${modifier}+Shift+a" = "focus child";
         "${modifier}+d" = "exec ${pkgs.kickoff}/bin/kickoff";
         "Ctrl+Alt+l" = "exec ${pkgs.swaylock}/bin/swaylock";
         "--locked ${modifier}+Shift+r" = "exec ${fixExternalMonitor}";
