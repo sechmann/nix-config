@@ -57,6 +57,7 @@ in {
       nh
       nix-output-monitor
       oath-toolkit
+      openssl
       p7zip
       pamixer
       pavucontrol
