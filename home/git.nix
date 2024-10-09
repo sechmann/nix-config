@@ -15,6 +15,7 @@
         pull.default = "current";
         pull.rebase = true;
         push.default = "current";
+        push.autoSetupRemote = true;
         gpg.format = "ssh";
       };
       aliases = {
