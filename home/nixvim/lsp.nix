@@ -17,13 +17,13 @@
             };
           };
         };
-        rust-analyzer = {
+        rust_analyzer = {
           enable = true;
           installCargo = false;
           installRustc = false;
         };
         #nil-ls.enable = true;
-        kotlin-language-server.enable = true;
+        kotlin_language_server.enable = true;
         nixd.enable = true;
         elmls.enable = true;
         gleam.enable = true;

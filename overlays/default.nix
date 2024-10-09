@@ -1,5 +1,8 @@
-{inputs, ...}: let
-  zoom-pipewire = inputs.nixpkgs-zoom.legacyPackages."x86_64-linux".pipewire;
+{
+  inputs,
+  nixpkgs-zoom,
+  ...
+}: let
 in {
   additions = final: _prev:
     import ../pkgs {
@@ -7,18 +10,7 @@ in {
       pyproject-nix = inputs.pyproject-nix;
     };
   modifications = final: prev: {
-    zoom-us =
-      (prev.zoom-us.override {
-        pipewire = zoom-pipewire;
-      })
-      .overrideAttrs (oldAttrs: rec {
-        version = "6.0.10.5325";
-        src = prev.fetchurl {
-          url = "https://zoom.us/client/${version}/zoom_x86_64.pkg.tar.xz";
-          hash = "sha256-EStiiTUwSZFM9hyYXHDErlb0m6yjRwNl7O7XLXtkvjI=";
-        };
-      });
-
+    zoom-us = nixpkgs-zoom.zoom-us;
     slack = prev.slack.overrideAttrs (oldAttrs: {
       installPhase =
         oldAttrs.installPhase

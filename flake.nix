@@ -4,7 +4,7 @@
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
 
-    nixpkgs-zoom.url = "nixpkgs/24.05";
+    nixpkgs-zoom.url = "github:NixOS/nixpkgs/98053e7c05285b3079af95e99aef97d9455faef7";
 
     home-manager.url = "github:nix-community/home-manager";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
@@ -49,10 +49,14 @@
   } @ inputs: let
     system = "x86_64-linux";
     treeFmtEval = treefmt-nix.lib.evalModule nixpkgs.legacyPackages.${system} ./treefmt.nix;
-  in rec {
     overlays = import ./overlays {
       inherit inputs;
+      nixpkgs-zoom = import inputs.nixpkgs-zoom {
+        inherit system;
+        config.allowUnfree = true;
+      };
     };
+  in {
     nixosConfigurations = {
       vegar-nav = nixpkgs.lib.nixosSystem {
         inherit system;
