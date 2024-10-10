@@ -52,6 +52,7 @@ in {
       libreoffice-fresh
       lm_sensors
       lsof
+      moonlight-qt
       mpv
       networkmanagerapplet
       nh
